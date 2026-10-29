@@ -163,9 +163,10 @@
           <div class="banner__panel">
             <p class="kicker kicker--light">Edição anterior</p>
             <h2 class="banner__title">Reviva 2026</h2>
-            <p class="banner__text">Fotos, vídeos e depoimentos da edição 2026 em um só lugar.</p>
+            <p class="banner__text">Tour virtual 360°, fotos, vídeos e depoimentos da edição 2026.</p>
             <div class="banner__actions">
-              <a class="btn btn--primary" href="#/reviva-2026">Explorar a edição 2026 <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--primary" href="#/reviva-2026/feira-virtual">Visitar a feira virtual <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost-light" href="#/reviva-2026">Explorar a edição 2026</a>
             </div>
           </div>
         </div>
@@ -251,6 +252,25 @@
     </div>
   </section>
 
+  <section class="section virtual virtual--banner" aria-labelledby="h-virtual-home">
+    <div class="container virtual__grid">
+      <div class="virtual__text">
+        <p class="kicker">Feira virtual</p>
+        <h2 id="h-virtual-home" class="h2">A MRO Brasil 2026 continua aberta em 360°</h2>
+        <p>Percorra os espaços da edição 2026 no tour virtual, de qualquer lugar e a qualquer momento.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#/reviva-2026/feira-virtual">Visitar a feira virtual <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <a class="virtual__stage virtual__stage--link" href="#/reviva-2026/feira-virtual" tabindex="-1" aria-hidden="true">
+        <span class="virtual__poster">
+          <span class="virtual__ring"></span><span class="virtual__ring"></span><span class="virtual__ring"></span>
+          <span class="virtual__deg">360°</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="section" aria-label="Destaques institucionais">
     <div class="container features">
       <article class="feature">
@@ -260,7 +280,7 @@
         </figure>
         <p class="kicker">Edição anterior</p>
         <h2 class="h3">Reviva 2026</h2>
-        <p>Fotos, vídeos e depoimentos da edição 2026. Acervo oficial em preparação.</p>
+        <p>Fotos, vídeos e depoimentos da edição 2026, além do tour virtual 360°.</p>
         <a class="link-more" href="#/reviva-2026">Explorar a edição 2026 <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="feature">
@@ -615,16 +635,37 @@
 <!-- ================= REVIVA 2026 ================= -->
 <section class="page" data-page="reviva" aria-labelledby="h-reviva" hidden
   data-title="Reviva 2026 | MRO Brasil · Manutenção Aeronáutica"
-  data-description="Reviva a MRO Brasil 2026, feira de manutenção aeronáutica: galeria de fotos, vídeos e depoimentos da edição anterior. Acervo oficial em preparação.">
+  data-description="Reviva a MRO Brasil 2026, feira de manutenção aeronáutica: tour virtual 360° da edição, além de galeria de fotos, vídeos e depoimentos.">
   <header class="page-head page-head--dark page-head--reviva">
     <div class="container">
       <nav class="crumbs crumbs--light" aria-label="Você está em"><ol><li><a href="#/">Início</a></li><li aria-current="page">Reviva 2026</li></ol></nav>
       <p class="eyebrow eyebrow--light"><span class="eyebrow__index">—</span> Edição anterior</p>
       <h1 id="h-reviva" class="display display--light" tabindex="-1">Reviva a MRO Brasil 2026</h1>
       <p class="lead lead--light">Fotos, vídeos e depoimentos da edição 2026 reunidos em um só lugar.</p>
-      <p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Acervo oficial em preparação.</strong> As imagens desta página são demonstrações de layout e não são registros da MRO Brasil 2026. Vídeos e depoimentos aparecem como pendentes até o envio dos arquivos autorizados.</span></p>
+      <p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>O tour virtual 360° é um registro real da edição 2026.</strong> As fotos da galeria abaixo ainda são demonstrações de layout; vídeos e depoimentos aparecem como pendentes até o envio dos arquivos autorizados.</span></p>
     </div>
   </header>
+
+  <section class="section virtual" id="reviva-virtual" aria-labelledby="h-virtual">
+    <div class="container virtual__grid">
+      <div class="virtual__text">
+        <p class="kicker">Feira virtual</p>
+        <h2 id="h-virtual" class="h2">Percorra a MRO Brasil 2026 em 360°</h2>
+        <p>O tour virtual registra os espaços da edição 2026 e pode ser visitado por qualquer pessoa, a qualquer momento. Desenvolvido em parceria com a Orbitpan.</p>
+        <div class="actions">
+          <button type="button" class="btn btn--primary" data-tour-open aria-controls="tour-stage">Abrir o tour aqui</button>
+          <a class="btn btn--outline" href="https://app.orbitpan.com.br/mrobrasil/" target="_blank" rel="noopener" data-tour-link>Abrir em nova aba <svg class="ico" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(tour virtual, abre em nova aba)</span></a>
+        </div>
+      </div>
+      <div class="virtual__stage" id="tour-stage" data-tour-stage>
+        <div class="virtual__poster" aria-hidden="true">
+          <span class="virtual__ring"></span><span class="virtual__ring"></span><span class="virtual__ring"></span>
+          <span class="virtual__deg">360°</span>
+        </div>
+        <p class="virtual__note">O tour é carregado somente quando você escolhe abri-lo.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="h-galeria">
     <div class="container">

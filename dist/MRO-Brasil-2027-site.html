@@ -695,6 +695,35 @@ button { font: inherit; }
   .banner__media img, .banner__inner { translate: none; }
 }
 
+/* Feira virtual 2026: bloco imersivo com tour 360° carregado sob demanda */
+.virtual { background: radial-gradient(ellipse at 78% 45%, #163a8f 0%, var(--navy) 52%, var(--navy-deep) 100%); }
+.virtual .h2 { color: var(--white); }
+.virtual p { color: var(--on-dark-muted); max-width: 46ch; }
+.virtual .kicker { color: var(--blue-light); }
+.virtual .btn--outline { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, .5); }
+.virtual .btn--outline:hover { background: var(--white); color: var(--navy-ink); border-color: var(--white); }
+.virtual :focus-visible { outline-color: #FFD24A; }
+.virtual__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.virtual__stage { position: relative; aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; background: #040b31; border: 1px solid rgba(141, 178, 255, .28); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .65); }
+.virtual__stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.virtual__poster { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; }
+.virtual__poster::before { content: ""; position: absolute; width: 72%; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(from 0deg, rgba(141, 178, 255, .38), rgba(141, 178, 255, 0) 28%); }
+.virtual__ring { position: absolute; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(141, 178, 255, .32); }
+.virtual__ring:nth-child(1) { width: 26%; }
+.virtual__ring:nth-child(2) { width: 49%; }
+.virtual__ring:nth-child(3) { width: 72%; }
+.virtual__deg { position: relative; font-family: var(--f-display); font-weight: 700; font-size: clamp(48px, 7vw, 104px); letter-spacing: -0.02em; color: var(--white); }
+.virtual__note { position: absolute; left: 16px; right: 16px; bottom: 14px; margin: 0; text-align: center; font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) {
+  .virtual__poster::before { animation: radar-sweep 6s linear infinite; }
+  @keyframes radar-sweep { to { transform: rotate(1turn); } }
+}
+@media (max-width: 899px) { .virtual__grid { grid-template-columns: 1fr; } }
+.virtual--banner .virtual__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.virtual__stage--link { display: block; aspect-ratio: 16 / 9; transition: transform var(--dur-slow) var(--ease-out), border-color var(--dur-fast); }
+.virtual__stage--link:hover { transform: translateY(-4px); border-color: rgba(141, 178, 255, .6); }
+@media (max-width: 899px) { .virtual--banner .virtual__grid { grid-template-columns: 1fr; } .virtual--banner .virtual__stage { max-width: 520px; } }
+
 </style>
 <noscript><style>.page[hidden]{display:block!important}</style></noscript>
 <script type="application/ld+json">
@@ -837,9 +866,10 @@ button { font: inherit; }
           <div class="banner__panel">
             <p class="kicker kicker--light">Edição anterior</p>
             <h2 class="banner__title">Reviva 2026</h2>
-            <p class="banner__text">Fotos, vídeos e depoimentos da edição 2026 em um só lugar.</p>
+            <p class="banner__text">Tour virtual 360°, fotos, vídeos e depoimentos da edição 2026.</p>
             <div class="banner__actions">
-              <a class="btn btn--primary" href="#/reviva-2026">Explorar a edição 2026 <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--primary" href="#/reviva-2026/feira-virtual">Visitar a feira virtual <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost-light" href="#/reviva-2026">Explorar a edição 2026</a>
             </div>
           </div>
         </div>
@@ -925,6 +955,25 @@ button { font: inherit; }
     </div>
   </section>
 
+  <section class="section virtual virtual--banner" aria-labelledby="h-virtual-home">
+    <div class="container virtual__grid">
+      <div class="virtual__text">
+        <p class="kicker">Feira virtual</p>
+        <h2 id="h-virtual-home" class="h2">A MRO Brasil 2026 continua aberta em 360°</h2>
+        <p>Percorra os espaços da edição 2026 no tour virtual, de qualquer lugar e a qualquer momento.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="#/reviva-2026/feira-virtual">Visitar a feira virtual <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <a class="virtual__stage virtual__stage--link" href="#/reviva-2026/feira-virtual" tabindex="-1" aria-hidden="true">
+        <span class="virtual__poster">
+          <span class="virtual__ring"></span><span class="virtual__ring"></span><span class="virtual__ring"></span>
+          <span class="virtual__deg">360°</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <section class="section" aria-label="Destaques institucionais">
     <div class="container features">
       <article class="feature">
@@ -934,7 +983,7 @@ button { font: inherit; }
         </figure>
         <p class="kicker">Edição anterior</p>
         <h2 class="h3">Reviva 2026</h2>
-        <p>Fotos, vídeos e depoimentos da edição 2026. Acervo oficial em preparação.</p>
+        <p>Fotos, vídeos e depoimentos da edição 2026, além do tour virtual 360°.</p>
         <a class="link-more" href="#/reviva-2026">Explorar a edição 2026 <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="feature">
@@ -1289,16 +1338,37 @@ button { font: inherit; }
 <!-- ================= REVIVA 2026 ================= -->
 <section class="page" data-page="reviva" aria-labelledby="h-reviva" hidden
   data-title="Reviva 2026 | MRO Brasil · Manutenção Aeronáutica"
-  data-description="Reviva a MRO Brasil 2026, feira de manutenção aeronáutica: galeria de fotos, vídeos e depoimentos da edição anterior. Acervo oficial em preparação.">
+  data-description="Reviva a MRO Brasil 2026, feira de manutenção aeronáutica: tour virtual 360° da edição, além de galeria de fotos, vídeos e depoimentos.">
   <header class="page-head page-head--dark page-head--reviva">
     <div class="container">
       <nav class="crumbs crumbs--light" aria-label="Você está em"><ol><li><a href="#/">Início</a></li><li aria-current="page">Reviva 2026</li></ol></nav>
       <p class="eyebrow eyebrow--light"><span class="eyebrow__index">—</span> Edição anterior</p>
       <h1 id="h-reviva" class="display display--light" tabindex="-1">Reviva a MRO Brasil 2026</h1>
       <p class="lead lead--light">Fotos, vídeos e depoimentos da edição 2026 reunidos em um só lugar.</p>
-      <p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Acervo oficial em preparação.</strong> As imagens desta página são demonstrações de layout e não são registros da MRO Brasil 2026. Vídeos e depoimentos aparecem como pendentes até o envio dos arquivos autorizados.</span></p>
+      <p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>O tour virtual 360° é um registro real da edição 2026.</strong> As fotos da galeria abaixo ainda são demonstrações de layout; vídeos e depoimentos aparecem como pendentes até o envio dos arquivos autorizados.</span></p>
     </div>
   </header>
+
+  <section class="section virtual" id="reviva-virtual" aria-labelledby="h-virtual">
+    <div class="container virtual__grid">
+      <div class="virtual__text">
+        <p class="kicker">Feira virtual</p>
+        <h2 id="h-virtual" class="h2">Percorra a MRO Brasil 2026 em 360°</h2>
+        <p>O tour virtual registra os espaços da edição 2026 e pode ser visitado por qualquer pessoa, a qualquer momento. Desenvolvido em parceria com a Orbitpan.</p>
+        <div class="actions">
+          <button type="button" class="btn btn--primary" data-tour-open aria-controls="tour-stage">Abrir o tour aqui</button>
+          <a class="btn btn--outline" href="https://app.orbitpan.com.br/mrobrasil/" target="_blank" rel="noopener" data-tour-link>Abrir em nova aba <svg class="ico" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(tour virtual, abre em nova aba)</span></a>
+        </div>
+      </div>
+      <div class="virtual__stage" id="tour-stage" data-tour-stage>
+        <div class="virtual__poster" aria-hidden="true">
+          <span class="virtual__ring"></span><span class="virtual__ring"></span><span class="virtual__ring"></span>
+          <span class="virtual__deg">360°</span>
+        </div>
+        <p class="virtual__note">O tour é carregado somente quando você escolhe abri-lo.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="h-galeria">
     <div class="container">
@@ -1630,7 +1700,7 @@ button { font: inherit; }
     { path: "participar", page: "participar", nav: "participar" },
     { path: "feira", page: "feira", nav: "feira", sections: { sobre: "feira-sobre", publico: "feira-publico", oportunidades: "feira-oportunidades", informacoes: "feira-informacoes" } },
     { path: "patrocinio", page: "patrocinio", nav: "patrocinio", sections: { formulario: "patrocinio-formulario" } },
-    { path: "reviva-2026", page: "reviva", nav: "reviva", filters: ["fotos", "videos", "depoimentos"] },
+    { path: "reviva-2026", page: "reviva", nav: "reviva", filters: ["fotos", "videos", "depoimentos"], sections: { "feira-virtual": "reviva-virtual" } },
     { path: "contato", page: "contato", nav: "contato" },
     { path: "", page: "inicio", nav: null }
   ];
@@ -2156,7 +2226,7 @@ button { font: inherit; }
     var targets = $$([
       ".intro__text", ".factsheet", ".section-intro", ".pillar", ".feature", ".service__inner",
       ".cols__head", ".cols__body", ".section-head", ".paths__item", ".choose__item", ".secondary-path",
-      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner"
+      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage"
     ].join(","));
     if (!("IntersectionObserver" in window)) return;
     doc.documentElement.classList.add("js");
@@ -2211,6 +2281,28 @@ button { font: inherit; }
       if (e.matches) banner.style.removeProperty("--parallax");
     });
     update();
+  })();
+
+  /* Feira virtual: o tour (página de terceiros) só carrega quando a pessoa pede. */
+  (function () {
+    var btn = $("[data-tour-open]");
+    var stage = $("[data-tour-stage]");
+    var link = $("[data-tour-link]");
+    if (!btn || !stage || !link) return;
+    btn.addEventListener("click", function () {
+      if (stage.querySelector("iframe")) return;
+      var frame = doc.createElement("iframe");
+      frame.src = link.href;
+      frame.title = "Tour virtual 360° da MRO Brasil 2026";
+      frame.allow = "fullscreen; accelerometer; gyroscope; xr-spatial-tracking";
+      frame.setAttribute("allowfullscreen", "");
+      stage.innerHTML = "";
+      stage.appendChild(frame);
+      stage.classList.add("is-loaded");
+      btn.disabled = true;
+      btn.textContent = "Tour aberto";
+      frame.focus();
+    });
   })();
 
   /* Sombra discreta no cabeçalho após rolar. */

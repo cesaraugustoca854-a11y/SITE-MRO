@@ -18,7 +18,7 @@
     { path: "participar", page: "participar", nav: "participar" },
     { path: "feira", page: "feira", nav: "feira", sections: { sobre: "feira-sobre", publico: "feira-publico", oportunidades: "feira-oportunidades", informacoes: "feira-informacoes" } },
     { path: "patrocinio", page: "patrocinio", nav: "patrocinio", sections: { formulario: "patrocinio-formulario" } },
-    { path: "reviva-2026", page: "reviva", nav: "reviva", filters: ["fotos", "videos", "depoimentos"] },
+    { path: "reviva-2026", page: "reviva", nav: "reviva", filters: ["fotos", "videos", "depoimentos"], sections: { "feira-virtual": "reviva-virtual" } },
     { path: "contato", page: "contato", nav: "contato" },
     { path: "", page: "inicio", nav: null }
   ];
@@ -544,7 +544,7 @@
     var targets = $$([
       ".intro__text", ".factsheet", ".section-intro", ".pillar", ".feature", ".service__inner",
       ".cols__head", ".cols__body", ".section-head", ".paths__item", ".choose__item", ".secondary-path",
-      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner"
+      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage"
     ].join(","));
     if (!("IntersectionObserver" in window)) return;
     doc.documentElement.classList.add("js");
@@ -599,6 +599,28 @@
       if (e.matches) banner.style.removeProperty("--parallax");
     });
     update();
+  })();
+
+  /* Feira virtual: o tour (página de terceiros) só carrega quando a pessoa pede. */
+  (function () {
+    var btn = $("[data-tour-open]");
+    var stage = $("[data-tour-stage]");
+    var link = $("[data-tour-link]");
+    if (!btn || !stage || !link) return;
+    btn.addEventListener("click", function () {
+      if (stage.querySelector("iframe")) return;
+      var frame = doc.createElement("iframe");
+      frame.src = link.href;
+      frame.title = "Tour virtual 360° da MRO Brasil 2026";
+      frame.allow = "fullscreen; accelerometer; gyroscope; xr-spatial-tracking";
+      frame.setAttribute("allowfullscreen", "");
+      stage.innerHTML = "";
+      stage.appendChild(frame);
+      stage.classList.add("is-loaded");
+      btn.disabled = true;
+      btn.textContent = "Tour aberto";
+      frame.focus();
+    });
   })();
 
   /* Sombra discreta no cabeçalho após rolar. */

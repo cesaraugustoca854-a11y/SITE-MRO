@@ -179,7 +179,7 @@ def run(c, url):
                       "location.hash=h; await wait(120); const p=document.querySelector('[data-page]:not([hidden])');"
                       "out[h]=p.dataset.page+' | '+document.title+' | h1: '+p.querySelector('h1').textContent.trim().slice(0,40);} "
                       "history.back(); await wait(150); out.voltar=location.hash; history.forward(); await wait(150); out.avancar=location.hash; return out")
-    R["links_internos_invalidos"] = c.js("const valid=/^#\\/(|feira(\\/(sobre|publico|oportunidades|informacoes))?|participar(\\/(visitante|expositor)(\\/formulario)?)?|patrocinio(\\/formulario)?|reviva-2026(\\/(fotos|videos|depoimentos))?|contato)$/;"
+    R["links_internos_invalidos"] = c.js("const valid=/^#\\/(|feira(\\/(sobre|publico|oportunidades|informacoes))?|participar(\\/(visitante|expositor)(\\/formulario)?)?|patrocinio(\\/formulario)?|reviva-2026(\\/(fotos|videos|depoimentos|feira-virtual))?|contato)$/;"
                                          "return [...document.querySelectorAll('a[href^=\"#\"]')].map(a=>a.getAttribute('href')).filter(h=>!valid.test(h) && h!=='#conteudo' && !h.startsWith('#f-'))")
     R["imagens_quebradas"] = c.js(wait + "for (const p of document.querySelectorAll('[data-page]')) p.hidden=false; document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager'); await wait(800);"
                                   "const bad=[...document.images].filter(i=>i.getAttribute('src') && (!i.complete || i.naturalWidth===0)).map(i=>i.alt); location.hash='#/feira'; await wait(50); location.hash='#/'; await wait(100); return bad")

@@ -1,0 +1,9 @@
+# Sistema
+.DS_Store
+
+# Capturas originais sem compressão (as versões .jpg ficam versionadas)
+qa/screenshots/*.png
+
+# Pacotes gerados por scripts/build_single.py (regeneráveis)
+dist/*.zip
+dist/versoes/
