@@ -776,6 +776,55 @@ button { font: inherit; }
 
 .page-head + .section--flush { padding-top: clamp(40px, 5vw, 72px); }
 
+/* Peça por peça: turbofan esquemático em papel de desenho técnico */
+.blueprint { background-color: #F5F8FC; background-image:
+  linear-gradient(rgba(13, 63, 125, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 63, 125, .08) 1px, transparent 1px),
+  linear-gradient(rgba(13, 63, 125, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 63, 125, .035) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; }
+.blueprint__head { max-width: 760px; margin-bottom: clamp(24px, 4vw, 48px); }
+.blueprint__lead { color: var(--muted); font-size: clamp(17px, 1.3vw, 20px); max-width: 56ch; margin: 16px 0 0; }
+.blueprint__figure { margin: 0; }
+.blueprint__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bp-line { fill: none; stroke: var(--navy-ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.bp-hot { stroke: var(--red); fill: rgba(225, 36, 41, .1); }
+.bp-casing .bp-line { stroke: rgba(20, 36, 94, .5); transition: opacity var(--dur-base) var(--ease-out); }
+.bp-axis { stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 18 6 3 6; opacity: .75; }
+.bp-part { transition: transform .9s var(--ease-out); }
+.is-exploded .bp-part--fan { transform: translateX(-80px); }
+.is-exploded .bp-part--comp { transform: translateX(-35px); }
+.is-exploded .bp-part--turb { transform: translateX(40px); }
+.is-exploded .bp-part--noz { transform: translateX(85px); }
+.is-exploded .bp-casing .bp-line { opacity: .25; }
+.bp-label { opacity: 0; transition: opacity var(--dur-base) var(--ease-out) .35s; }
+.is-exploded .bp-label { opacity: 1; }
+.bp-label line { stroke: var(--blue-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.bp-label circle { fill: var(--red); }
+.bp-num { fill: var(--white); font: 700 13px var(--f-display); text-anchor: middle; }
+.bp-name { fill: var(--navy-ink); font: 600 17px var(--f-display); text-anchor: middle; }
+.bp-air { fill: none; stroke: var(--blue); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: .006 .03; opacity: 0; transition: opacity var(--dur-base); }
+.bp-air--core { stroke: var(--red); }
+.is-flowing .bp-air { opacity: .8; }
+.blueprint__legend { display: none; }
+.blueprint__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.blueprint__bar .btn { flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .blueprint__figure .bp-part .bp-line, .js .blueprint__figure .bp-casing .bp-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+  .js .blueprint__figure.is-drawn .bp-line { stroke-dashoffset: 0; }
+  .js .blueprint__figure .bp-part--comp .bp-line { transition-delay: .15s; }
+  .js .blueprint__figure .bp-part--comb .bp-line { transition-delay: .3s; }
+  .js .blueprint__figure .bp-part--turb .bp-line { transition-delay: .45s; }
+  .js .blueprint__figure .bp-part--noz .bp-line { transition-delay: .6s; }
+  .is-flowing.is-visible .bp-air { animation: bp-flow 1.4s linear infinite; }
+  @keyframes bp-flow { to { stroke-dashoffset: -.036; } }
+}
+@media (max-width: 899px) {
+  .bp-label { display: none; }
+  .blueprint__legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px 20px; margin: 16px 0 0; padding: 0; list-style: none; counter-reset: bp; }
+  .blueprint__legend li { counter-increment: bp; display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 600; color: var(--navy-ink); }
+  .blueprint__legend li::before { content: counter(bp); display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--red); color: var(--white); font-size: 13px; font-weight: 700; }
+}
+@media (max-width: 599px) { .bp-line { stroke-width: 3.4; } }
+
 </style>
 <noscript><style>.page[hidden]{display:block!important}</style></noscript>
 <script type="application/ld+json">
@@ -986,6 +1035,26 @@ button { font: inherit; }
         <div><dt>Cidade</dt><dd>São Paulo — SP</dd></div>
         <div><dt>Programação</dt><dd class="is-pending">Em definição</dd></div>
       </dl>
+    </div>
+  </section>
+
+  <section class="section blueprint" aria-labelledby="h-turbina">
+    <div class="container">
+      <header class="blueprint__head">
+        <p class="kicker">Manutenção, reparo e revisão</p>
+        <h2 id="h-turbina" class="h2">Peça por peça, a cadeia que mantém a aeronave voando</h2>
+        <p class="blueprint__lead">Da inspeção à revisão completa de um motor, cada componente passa por especialistas. A MRO Brasil reúne essa cadeia em um só lugar.</p>
+      </header>
+      <figure class="blueprint__figure" data-turbina>
+        <svg class="blueprint__svg" viewBox="50 20 1080 490" role="img" aria-labelledby="turbina-titulo turbina-desc"><title id="turbina-titulo">Turbofan em corte, desenho esquemático</title><desc id="turbina-desc">Motor turbofan visto em corte lateral, com cinco estágios na ordem do escoamento do ar: 1, fan; 2, compressor; 3, câmara de combustão; 4, turbina; 5, bocal de exaustão.</desc><g class="bp-casing"><path class="bp-line" d="M 198 70 L 204 52 L 232 46 L 720 58 L 836 146" pathLength="1"/><path class="bp-line" d="M 198 410 L 204 428 L 232 434 L 720 422 L 836 334" pathLength="1"/></g><line class="bp-axis" x1="120" y1="240" x2="1060" y2="240"/><g class="bp-part bp-part--fan"><path class="bp-line" d="M 148 240 Q 150 204 202 194 L 202 286 Q 150 276 148 240 Z" pathLength="1"/><path class="bp-line" d="M 204 194 L 214 64 L 234 64 L 228 194 Z" pathLength="1"/><path class="bp-line" d="M 204 286 L 214 416 L 234 416 L 228 286 Z" pathLength="1"/><path class="bp-line" d="M 252 92 L 258 184" pathLength="1"/><path class="bp-line" d="M 252 388 L 258 296" pathLength="1"/><g class="bp-label" aria-hidden="true"><line x1="220" y1="440" x2="220" y2="452"/><circle cx="220" cy="452" r="11"/><text x="220" y="456" class="bp-num">1</text><text x="220" y="486" class="bp-name">Fan</text></g></g><g class="bp-part bp-part--comp"><path class="bp-line" d="M 276 176 L 520 196" pathLength="1"/><path class="bp-line" d="M 276 304 L 520 284" pathLength="1"/><path class="bp-line" d="M 276 222 L 520 228" pathLength="1"/><path class="bp-line" d="M 276 258 L 520 252" pathLength="1"/><path class="bp-line" d="M 290 222 L 300 184" pathLength="1"/><path class="bp-line" d="M 290 258 L 300 296" pathLength="1"/><path class="bp-line" d="M 319 222.6 L 329 186.2" pathLength="1"/><path class="bp-line" d="M 319 257.4 L 329 293.8" pathLength="1"/><path class="bp-line" d="M 348 223.2 L 358 188.4" pathLength="1"/><path class="bp-line" d="M 348 256.8 L 358 291.6" pathLength="1"/><path class="bp-line" d="M 377 223.8 L 387 190.6" pathLength="1"/><path class="bp-line" d="M 377 256.2 L 387 289.4" pathLength="1"/><path class="bp-line" d="M 406 224.4 L 416 192.8" pathLength="1"/><path class="bp-line" d="M 406 255.6 L 416 287.2" pathLength="1"/><path class="bp-line" d="M 435 225 L 445 195" pathLength="1"/><path class="bp-line" d="M 435 255 L 445 285" pathLength="1"/><path class="bp-line" d="M 464 225.6 L 474 197.2" pathLength="1"/><path class="bp-line" d="M 464 254.4 L 474 282.8" pathLength="1"/><path class="bp-line" d="M 493 226.2 L 503 199.4" pathLength="1"/><path class="bp-line" d="M 493 253.8 L 503 280.6" pathLength="1"/><g class="bp-label" aria-hidden="true"><line x1="398" y1="440" x2="398" y2="452"/><circle cx="398" cy="452" r="11"/><text x="398" y="456" class="bp-num">2</text><text x="398" y="486" class="bp-name">Compressor</text></g></g><g class="bp-part bp-part--comb"><path class="bp-line" d="M 546 202 C 562 186 640 186 656 202 L 656 278 C 640 294 562 294 546 278 Z" pathLength="1"/><path class="bp-line bp-hot" d="M 566 240 Q 600 220 636 240 Q 600 260 566 240 Z" pathLength="1"/><g class="bp-label" aria-hidden="true"><line x1="601" y1="440" x2="601" y2="452"/><circle cx="601" cy="452" r="11"/><text x="601" y="456" class="bp-num">3</text><text x="601" y="486" class="bp-name">Câmara de combustão</text></g></g><g class="bp-part bp-part--turb"><path class="bp-line" d="M 682 196 L 822 172" pathLength="1"/><path class="bp-line" d="M 682 284 L 822 308" pathLength="1"/><path class="bp-line" d="M 682 228 L 822 222" pathLength="1"/><path class="bp-line" d="M 682 252 L 822 258" pathLength="1"/><path class="bp-line" d="M 694 228 L 706 194" pathLength="1"/><path class="bp-line" d="M 694 252 L 706 286" pathLength="1"/><path class="bp-line" d="M 727 226.5 L 739 188" pathLength="1"/><path class="bp-line" d="M 727 253.5 L 739 292" pathLength="1"/><path class="bp-line" d="M 760 225 L 772 182" pathLength="1"/><path class="bp-line" d="M 760 255 L 772 298" pathLength="1"/><path class="bp-line" d="M 793 223.5 L 805 176" pathLength="1"/><path class="bp-line" d="M 793 256.5 L 805 304" pathLength="1"/><g class="bp-label" aria-hidden="true"><line x1="752" y1="440" x2="752" y2="452"/><circle cx="752" cy="452" r="11"/><text x="752" y="456" class="bp-num">4</text><text x="752" y="486" class="bp-name">Turbina</text></g></g><g class="bp-part bp-part--noz"><path class="bp-line" d="M 842 150 L 1008 196" pathLength="1"/><path class="bp-line" d="M 842 330 L 1008 284" pathLength="1"/><path class="bp-line" d="M 842 222 L 962 240 L 842 258" pathLength="1"/><g class="bp-label" aria-hidden="true"><line x1="925" y1="440" x2="925" y2="452"/><circle cx="925" cy="452" r="11"/><text x="925" y="456" class="bp-num">5</text><text x="925" y="486" class="bp-name">Bocal de exaustão</text></g></g><g class="bp-flow" aria-hidden="true"><path class="bp-air" d="M 170 120 L 520 128 L 840 166 L 1060 200" pathLength="1"/><path class="bp-air" d="M 170 360 L 520 352 L 840 314 L 1060 280" pathLength="1"/><path class="bp-air bp-air--core" d="M 170 212 L 540 216 L 700 214 L 1060 232" pathLength="1"/><path class="bp-air bp-air--core" d="M 170 268 L 540 264 L 700 266 L 1060 248" pathLength="1"/></g></svg>
+        <ol class="blueprint__legend" aria-hidden="true">
+          <li>Fan</li><li>Compressor</li><li>Câmara de combustão</li><li>Turbina</li><li>Bocal de exaustão</li>
+        </ol>
+        <figcaption class="blueprint__bar">
+          <span>Turbofan em corte, desenho esquemático. Os estágios seguem a ordem do escoamento do ar.</span>
+          <button type="button" class="btn btn--outline blueprint__toggle" data-turbina-toggle>Desmontar o motor</button>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -2289,7 +2358,7 @@ button { font: inherit; }
     var targets = $$([
       ".intro__text", ".factsheet", ".section-intro", ".pillar", ".feature", ".service__inner",
       ".cols__head", ".cols__body", ".section-head", ".paths__item", ".choose__item", ".secondary-path",
-      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage"
+      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage", ".blueprint__head"
     ].join(","));
     if (!("IntersectionObserver" in window)) return;
     doc.documentElement.classList.add("js");
@@ -2371,6 +2440,36 @@ button { font: inherit; }
       btn.textContent = "Tour aberto";
       frame.focus();
     });
+  })();
+
+  /* Peça por peça: o motor se desenha ao entrar na tela e depois se desmonta.
+     O botão alterna; montado, o ar volta a passar pelo motor. */
+  (function () {
+    var fig = $("[data-turbina]");
+    if (!fig) return;
+    var btn = $("[data-turbina-toggle]", fig);
+    var touched = false;
+    function setExploded(on) {
+      fig.classList.toggle("is-exploded", on);
+      fig.classList.toggle("is-flowing", !on);
+      btn.textContent = on ? "Montar o motor" : "Desmontar o motor";
+    }
+    btn.addEventListener("click", function () {
+      touched = true;
+      setExploded(!fig.classList.contains("is-exploded"));
+    });
+    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+      fig.classList.add("is-drawn", "is-visible");
+      setExploded(true);
+      return;
+    }
+    new IntersectionObserver(function (entries) {
+      var en = entries[0];
+      fig.classList.toggle("is-visible", en.isIntersecting); // escoamento só anima visível
+      if (!en.isIntersecting || fig.classList.contains("is-drawn")) return;
+      fig.classList.add("is-drawn");
+      setTimeout(function () { if (!touched) setExploded(true); }, 2300);
+    }, { threshold: 0.3 }).observe(fig);
   })();
 
   /* Sombra discreta no cabeçalho após rolar. */

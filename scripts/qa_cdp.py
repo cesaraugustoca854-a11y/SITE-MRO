@@ -104,7 +104,7 @@ class CDP:
         if full:  # carrega imagens tardias antes da captura de página inteira
             self.js("document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager');"
                     "await Promise.all([...document.images].filter(i=>i.getAttribute('src')&&!i.complete).map(i=>new Promise(r=>{i.onload=i.onerror=r})));"
-                    "document.querySelectorAll('.reveal').forEach(e=>e.classList.add('is-in')); await new Promise(r=>setTimeout(r,1000));")
+                    "document.querySelectorAll('.reveal').forEach(e=>e.classList.add('is-in')); document.querySelectorAll('[data-turbina]').forEach(f=>f.classList.add('is-drawn','is-exploded')); await new Promise(r=>setTimeout(r,1000));")
         metrics = self.call("Page.getLayoutMetrics")
         h = int(metrics["cssContentSize"]["height"]) if full else None
         params = {"format": "png", "captureBeyondViewport": full}

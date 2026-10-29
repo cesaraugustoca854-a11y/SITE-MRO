@@ -753,3 +753,52 @@ button { font: inherit; }
 }
 
 .page-head + .section--flush { padding-top: clamp(40px, 5vw, 72px); }
+
+/* Peça por peça: turbofan esquemático em papel de desenho técnico */
+.blueprint { background-color: #F5F8FC; background-image:
+  linear-gradient(rgba(13, 63, 125, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 63, 125, .08) 1px, transparent 1px),
+  linear-gradient(rgba(13, 63, 125, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(13, 63, 125, .035) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px; }
+.blueprint__head { max-width: 760px; margin-bottom: clamp(24px, 4vw, 48px); }
+.blueprint__lead { color: var(--muted); font-size: clamp(17px, 1.3vw, 20px); max-width: 56ch; margin: 16px 0 0; }
+.blueprint__figure { margin: 0; }
+.blueprint__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bp-line { fill: none; stroke: var(--navy-ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.bp-hot { stroke: var(--red); fill: rgba(225, 36, 41, .1); }
+.bp-casing .bp-line { stroke: rgba(20, 36, 94, .5); transition: opacity var(--dur-base) var(--ease-out); }
+.bp-axis { stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 18 6 3 6; opacity: .75; }
+.bp-part { transition: transform .9s var(--ease-out); }
+.is-exploded .bp-part--fan { transform: translateX(-80px); }
+.is-exploded .bp-part--comp { transform: translateX(-35px); }
+.is-exploded .bp-part--turb { transform: translateX(40px); }
+.is-exploded .bp-part--noz { transform: translateX(85px); }
+.is-exploded .bp-casing .bp-line { opacity: .25; }
+.bp-label { opacity: 0; transition: opacity var(--dur-base) var(--ease-out) .35s; }
+.is-exploded .bp-label { opacity: 1; }
+.bp-label line { stroke: var(--blue-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.bp-label circle { fill: var(--red); }
+.bp-num { fill: var(--white); font: 700 13px var(--f-display); text-anchor: middle; }
+.bp-name { fill: var(--navy-ink); font: 600 17px var(--f-display); text-anchor: middle; }
+.bp-air { fill: none; stroke: var(--blue); stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: .006 .03; opacity: 0; transition: opacity var(--dur-base); }
+.bp-air--core { stroke: var(--red); }
+.is-flowing .bp-air { opacity: .8; }
+.blueprint__legend { display: none; }
+.blueprint__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.blueprint__bar .btn { flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .blueprint__figure .bp-part .bp-line, .js .blueprint__figure .bp-casing .bp-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+  .js .blueprint__figure.is-drawn .bp-line { stroke-dashoffset: 0; }
+  .js .blueprint__figure .bp-part--comp .bp-line { transition-delay: .15s; }
+  .js .blueprint__figure .bp-part--comb .bp-line { transition-delay: .3s; }
+  .js .blueprint__figure .bp-part--turb .bp-line { transition-delay: .45s; }
+  .js .blueprint__figure .bp-part--noz .bp-line { transition-delay: .6s; }
+  .is-flowing.is-visible .bp-air { animation: bp-flow 1.4s linear infinite; }
+  @keyframes bp-flow { to { stroke-dashoffset: -.036; } }
+}
+@media (max-width: 899px) {
+  .bp-label { display: none; }
+  .blueprint__legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px 20px; margin: 16px 0 0; padding: 0; list-style: none; counter-reset: bp; }
+  .blueprint__legend li { counter-increment: bp; display: flex; align-items: center; gap: 10px; font-family: var(--f-display); font-weight: 600; color: var(--navy-ink); }
+  .blueprint__legend li::before { content: counter(bp); display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--red); color: var(--white); font-size: 13px; font-weight: 700; }
+}
+@media (max-width: 599px) { .bp-line { stroke-width: 3.4; } }

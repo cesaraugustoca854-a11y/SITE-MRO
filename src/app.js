@@ -544,7 +544,7 @@
     var targets = $$([
       ".intro__text", ".factsheet", ".section-intro", ".pillar", ".feature", ".service__inner",
       ".cols__head", ".cols__body", ".section-head", ".paths__item", ".choose__item", ".secondary-path",
-      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage"
+      ".form-layout__head", ".contact__main", ".contact__side", ".g-item", ".cta-band__inner", ".virtual__text", ".virtual__stage", ".blueprint__head"
     ].join(","));
     if (!("IntersectionObserver" in window)) return;
     doc.documentElement.classList.add("js");
@@ -626,6 +626,36 @@
       btn.textContent = "Tour aberto";
       frame.focus();
     });
+  })();
+
+  /* Peça por peça: o motor se desenha ao entrar na tela e depois se desmonta.
+     O botão alterna; montado, o ar volta a passar pelo motor. */
+  (function () {
+    var fig = $("[data-turbina]");
+    if (!fig) return;
+    var btn = $("[data-turbina-toggle]", fig);
+    var touched = false;
+    function setExploded(on) {
+      fig.classList.toggle("is-exploded", on);
+      fig.classList.toggle("is-flowing", !on);
+      btn.textContent = on ? "Montar o motor" : "Desmontar o motor";
+    }
+    btn.addEventListener("click", function () {
+      touched = true;
+      setExploded(!fig.classList.contains("is-exploded"));
+    });
+    if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+      fig.classList.add("is-drawn", "is-visible");
+      setExploded(true);
+      return;
+    }
+    new IntersectionObserver(function (entries) {
+      var en = entries[0];
+      fig.classList.toggle("is-visible", en.isIntersecting); // escoamento só anima visível
+      if (!en.isIntersecting || fig.classList.contains("is-drawn")) return;
+      fig.classList.add("is-drawn");
+      setTimeout(function () { if (!touched) setExploded(true); }, 2300);
+    }, { threshold: 0.3 }).observe(fig);
   })();
 
   /* Sombra discreta no cabeçalho após rolar. */
