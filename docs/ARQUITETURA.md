@@ -61,6 +61,6 @@ Mudanças futuras devem seguir essa direção.
 
 ## 6. Personalidade visual (29/10/2026)
 
-Depois da v2, o cliente achou o site "quadrado, sem personalidade" em comparação ao site atual. A v4 mantém a organização aprovada e traz de volta a linguagem da marca: banner da home como **palco de radar** (azul-profundo com luz azul elétrica, anéis de radar, grade técnica e uma rota de voo que o avião cruza uma vez), foto como cartão em perspectiva, títulos do banner em caixa alta (vernáculo do site atual), controles circulares, bordas diagonais nas faixas escuras e ícones em círculos. A luz azul fica restrita ao palco e aos blocos da feira virtual.
+Depois da v2, o cliente achou o site "quadrado, sem personalidade" em comparação ao site atual. A v4 mantém a organização aprovada e traz de volta a linguagem da marca: banner da home como **palco de radar** (azul-profundo com luz azul elétrica, anéis de radar, grade técnica e uma rota de voo que o avião cruza uma vez), foto como cartão em perspectiva, títulos do banner em caixa alta (vernáculo do site atual), controles circulares, bordas diagonais nas faixas escuras e ícones em círculos. A luz azul fica restrita ao palco, aos cabeçalhos das páginas internas (mesmo palco, com foto em cartão, anéis e arco pontilhado de rota) e aos blocos da feira virtual.
 
 Feira virtual 2026: tour 360° desenvolvido com a Orbitpan (https://app.orbitpan.com.br/mrobrasil/), carregado somente por clique.
