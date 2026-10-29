@@ -701,3 +701,4 @@ button { font: inherit; }
 .virtual__stage--link { display: block; aspect-ratio: 16 / 9; transition: transform var(--dur-slow) var(--ease-out), border-color var(--dur-fast); }
 .virtual__stage--link:hover { transform: translateY(-4px); border-color: rgba(141, 178, 255, .6); }
 @media (max-width: 899px) { .virtual--banner .virtual__grid { grid-template-columns: 1fr; } .virtual--banner .virtual__stage { max-width: 520px; } }
+.virtual .h2 { margin-bottom: 20px; }
