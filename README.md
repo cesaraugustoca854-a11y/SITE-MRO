@@ -12,7 +12,8 @@ Navegação por hash (`#/feira`, `#/participar/visitante`…), compatível com `
 
 ## Versões
 
-- **v2 (atual):** direção institucional, menos informação por bloco, animações discretas.
+- **v4 (atual):** palco de radar na home (fundo azul-profundo com luz, anéis e rota de voo, foto em perspectiva), bordas diagonais e feira virtual 360°.
+- **v2/v3:** direção institucional e banner em camadas, base aprovada da organização das páginas.
 - **v1:** `dist/versoes/v1-MRO-Brasil-2027-site.html`, mantida para comparação.
 
 ## Estrutura

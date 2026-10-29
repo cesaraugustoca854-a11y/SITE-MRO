@@ -581,6 +581,11 @@
     links.forEach(function (a) { var t = doc.getElementById(a.getAttribute("data-spy")); if (t) io.observe(t); });
   })();
 
+  /* Rota de voo do palco: sem animação para quem reduz movimento (avião já no destino). */
+  if (reduceMotion.matches) {
+    $$(".stage__plane animateMotion").forEach(function (m) { m.setAttribute("dur", "0.001s"); m.setAttribute("begin", "0s"); });
+  }
+
   /* Banner em camadas: a foto rola mais devagar que o painel (parallax leve). */
   (function () {
     var banner = $("#destaques");

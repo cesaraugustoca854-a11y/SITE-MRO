@@ -89,6 +89,11 @@
     "reviva@360": "ok",
     "contato@360": "ok"
   },
+  "banner_parallax": {
+    "parallax": "111.6px",
+    "foto": "0px 13.392px",
+    "cartao": "matrix3d(0.987688, 0, 0.156434, -0.000111739, -0.00818715, 0.99863, 0.0516916, -3.69226e-05, -0.15622, -0.052336, 0.986335, -0.000704525, 0, 0, 0, 1)"
+  },
   "console_errors": [],
   "network_requests_externos": []
 }

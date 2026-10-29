@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="MRO Brasil 2027, Feira Internacional de Manutenção Aeronáutica: 20 e 21 de outubro de 2027, Centro de Convenções Frei Caneca, São Paulo. Saiba como participar.">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/exo-2-latin-700-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/roboto-latin-400-normal.woff2" crossorigin>
-<link rel="preload" as="image" type="image/avif" href="assets/img/hero-aviacao.avif" imagesrcset="assets/img/hero-aviacao-800.avif 800w, assets/img/hero-aviacao.avif 1536w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/avif" href="assets/img/hero-aviacao.avif" imagesrcset="assets/img/hero-aviacao-800.avif 800w, assets/img/hero-aviacao.avif 1536w" imagesizes="(min-width: 900px) 52vw, 100vw">
 <link rel="stylesheet" href="src/styles.css">
 <noscript><style>.page[hidden]{display:block!important}</style></noscript>
 <script type="application/ld+json">
@@ -128,6 +128,16 @@
   data-title="MRO Brasil 2027 — Feira Internacional de Manutenção Aeronáutica"
   data-description="MRO Brasil 2027, Feira Internacional de Manutenção Aeronáutica: 20 e 21 de outubro de 2027, Centro de Convenções Frei Caneca, São Paulo. Saiba como participar.">
 
+  <div class="stage">
+    <div class="stage__fx" aria-hidden="true">
+      <span class="stage__ring"></span><span class="stage__ring"></span><span class="stage__ring"></span>
+      <svg class="stage__route" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <path id="rota-voo" d="M-40 640 C 360 600, 700 420, 1000 250 S 1380 40, 1500 10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 9" stroke-linecap="round"/>
+        <g class="stage__plane"><g transform="rotate(90) translate(-12 -12)"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="currentColor"/></g>
+          <animateMotion dur="7s" begin="0.8s" fill="freeze" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines="0.4 0 0.2 1"><mpath href="#rota-voo"/></animateMotion>
+        </g>
+      </svg>
+    </div>
   <div class="masthead">
     <div class="container masthead__inner">
       <h1 id="h-inicio" class="masthead__title" tabindex="-1">MRO Brasil 2027 <span>Feira Internacional de Manutenção Aeronáutica</span></h1>
@@ -138,11 +148,7 @@
   <section class="carousel banner" aria-roledescription="carrossel" aria-label="Destaques" id="destaques">
     <div class="carousel__viewport">
       <div class="slide is-active" id="slide-1" role="group" aria-roledescription="destaque" aria-label="1 de 3: MRO Brasil 2027">
-        <figure class="banner__media" data-parallax>
-          <picture><source type="image/avif" srcset="assets/img/hero-aviacao-800.avif 800w, assets/img/hero-aviacao.avif 1536w" sizes="100vw"><img src="assets/img/hero-aviacao.jpg" srcset="assets/img/hero-aviacao-800.jpg 800w, assets/img/hero-aviacao.jpg 1536w" sizes="100vw" width="1536" height="1024" alt="Aeronave comercial em hangar de manutenção, com plataforma de acesso junto ao motor." fetchpriority="high" decoding="async"></picture>
-          <figcaption class="media-tag">Imagem ilustrativa</figcaption>
-        </figure>
-        <div class="container banner__inner">
+        <div class="container slide__layout">
           <div class="banner__panel">
             <p class="kicker kicker--light">Próxima edição</p>
             <h2 class="banner__title">Edição 2027</h2>
@@ -152,14 +158,14 @@
               <a class="btn btn--ghost-light" href="#/feira/informacoes">Informações da edição</a>
             </div>
           </div>
+          <figure class="banner__media" data-parallax>
+            <picture><source type="image/avif" srcset="assets/img/hero-aviacao-800.avif 800w, assets/img/hero-aviacao.avif 1536w" sizes="(min-width: 900px) 52vw, 100vw"><img src="assets/img/hero-aviacao.jpg" srcset="assets/img/hero-aviacao-800.jpg 800w, assets/img/hero-aviacao.jpg 1536w" sizes="(min-width: 900px) 52vw, 100vw" width="1536" height="1024" alt="Aeronave comercial em hangar de manutenção, com plataforma de acesso junto ao motor." fetchpriority="high" decoding="async"></picture>
+            <figcaption class="media-tag">Imagem ilustrativa</figcaption>
+          </figure>
         </div>
       </div>
       <div class="slide" id="slide-2" role="group" aria-roledescription="destaque" aria-label="2 de 3: Reviva 2026">
-        <figure class="banner__media" data-parallax>
-          <picture><source type="image/avif" srcset="assets/img/demo-feira.avif"><img src="assets/img/demo-feira.jpg" width="1280" height="960" alt="Ilustração de pavilhão de feira com visitantes circulando entre estandes." loading="lazy" decoding="async"></picture>
-          <figcaption class="media-tag">Imagem ilustrativa — não é registro da edição 2026</figcaption>
-        </figure>
-        <div class="container banner__inner">
+        <div class="container slide__layout">
           <div class="banner__panel">
             <p class="kicker kicker--light">Edição anterior</p>
             <h2 class="banner__title">Reviva 2026</h2>
@@ -169,14 +175,14 @@
               <a class="btn btn--ghost-light" href="#/reviva-2026">Explorar a edição 2026</a>
             </div>
           </div>
+          <figure class="banner__media" data-parallax>
+            <picture><source type="image/avif" srcset="assets/img/demo-feira.avif"><img src="assets/img/demo-feira.jpg" width="1280" height="960" alt="Ilustração de pavilhão de feira com visitantes circulando entre estandes." loading="lazy" decoding="async"></picture>
+            <figcaption class="media-tag">Imagem ilustrativa — não é registro da edição 2026</figcaption>
+          </figure>
         </div>
       </div>
       <div class="slide" id="slide-3" role="group" aria-roledescription="destaque" aria-label="3 de 3: Associe-se à MANTAER">
-        <figure class="banner__media" data-parallax>
-          <picture><source type="image/avif" srcset="assets/img/mantaer-manutencao-768.avif 768w, assets/img/mantaer-manutencao.avif 1280w" sizes="100vw"><img src="assets/img/mantaer-manutencao.jpg" srcset="assets/img/mantaer-manutencao-768.jpg 768w, assets/img/mantaer-manutencao.jpg 1280w" sizes="100vw" width="1280" height="851" alt="Profissional faz a limpeza do cone da hélice de uma aeronave na pista." loading="lazy" decoding="async"></picture>
-          <figcaption class="media-tag">Imagem da página de associação da MANTAER</figcaption>
-        </figure>
-        <div class="container banner__inner">
+        <div class="container slide__layout">
           <div class="banner__panel">
             <p class="banner__logo"><img src="assets/img/logo-mantaer.png" width="250" height="73" alt="MANTAER — Associação Brasileira de Manutenção Aeronáutica"></p>
             <h2 class="banner__title">Associe-se à MANTAER</h2>
@@ -185,6 +191,10 @@
               <a class="btn btn--primary" href="https://mantaer.com.br/associe-se/" target="_blank" rel="noopener">Associe-se à MANTAER <svg class="ico" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only">(abre o site da MANTAER em nova aba)</span></a>
             </div>
           </div>
+          <figure class="banner__media" data-parallax>
+            <picture><source type="image/avif" srcset="assets/img/mantaer-manutencao-768.avif 768w, assets/img/mantaer-manutencao.avif 1280w" sizes="(min-width: 900px) 52vw, 100vw"><img src="assets/img/mantaer-manutencao.jpg" srcset="assets/img/mantaer-manutencao-768.jpg 768w, assets/img/mantaer-manutencao.jpg 1280w" sizes="(min-width: 900px) 52vw, 100vw" width="1280" height="851" alt="Profissional faz a limpeza do cone da hélice de uma aeronave na pista." loading="lazy" decoding="async"></picture>
+            <figcaption class="media-tag">Imagem da página de associação da MANTAER</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -205,6 +215,7 @@
     </div>
     <p class="sr-only" aria-live="polite" data-carousel-live></p>
   </section>
+  </div>
 
   <section class="section" aria-labelledby="h-apresentacao">
     <div class="container intro">
@@ -252,7 +263,7 @@
     </div>
   </section>
 
-  <section class="section virtual virtual--banner" aria-labelledby="h-virtual-home">
+  <section class="section virtual virtual--banner edge-angle" aria-labelledby="h-virtual-home">
     <div class="container virtual__grid">
       <div class="virtual__text">
         <p class="kicker">Feira virtual</p>
@@ -296,7 +307,7 @@
     </div>
   </section>
 
-  <section class="service" aria-labelledby="h-atendimento">
+  <section class="service edge-angle" aria-labelledby="h-atendimento">
     <div class="container service__inner">
       <h2 id="h-atendimento" class="h3">Atendimento da organização</h2>
       <p class="service__channels"><a href="tel:+551150412088">(11) 5041-2088</a><a href="mailto:contato@deltafoxeventos.com.br">contato@deltafoxeventos.com.br</a></p>

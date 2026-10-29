@@ -228,7 +228,7 @@ def run(c, url):
     # 6. Banner: parallax e captura de cada destaque
     go(c, url, "#/", 1440, 900, False)
     R["banner_parallax"] = c.js("window.scrollTo(0,300); await new Promise(r=>setTimeout(r,300)); const b=document.getElementById('destaques'); const s=b.querySelector('.slide.is-active');"
-                                "const out={parallax:b.style.getPropertyValue('--parallax'), foto:getComputedStyle(s.querySelector('.banner__media img')).translate, painel:getComputedStyle(s.querySelector('.banner__inner')).translate}; window.scrollTo(0,0); return out")
+                                "const out={parallax:b.style.getPropertyValue('--parallax'), foto:getComputedStyle(s.querySelector('.banner__media img')).translate, cartao:getComputedStyle(s.querySelector('.banner__media')).transform}; window.scrollTo(0,0); return out")
     for w, h, mobile in [(1440, 900, False), (390, 844, True)]:
         go(c, url, "#/", w, h, mobile)
         c.js("document.querySelector('[data-carousel-toggle]').click()")
