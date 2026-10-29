@@ -1,0 +1,118 @@
+{
+  "url": "http://localhost:5207/",
+  "popup_antes_de_rolar": false,
+  "popup_primeira_visita": true,
+  "popup_escape": {
+    "aberto": false,
+    "foco": "conteudo"
+  },
+  "popup_apos_recarregar": false,
+  "popup_escolha_visitante": {
+    "aberto": false,
+    "rota": "#/participar/visitante",
+    "perfil": "visitante"
+  },
+  "rotas": {
+    "#/": "inicio | MRO Brasil 2027 — Feira Internacional de Manutenção Aeronáutica | h1: MRO Brasil 2027 Feira Internacional de M",
+    "#/feira": "feira | A feira | MRO Brasil 2027 · Manutenção Aeronáutica | h1: A feira",
+    "#/participar": "participar | Participar | MRO Brasil 2027 · Manutenção Aeronáutica | h1: Participar da MRO Brasil 2027",
+    "#/participar/visitante": "visitante | Visitante | MRO Brasil 2027 · Manutenção Aeronáutica | h1: Participar como visitante",
+    "#/participar/expositor": "expositor | Expositor | MRO Brasil 2027 · Manutenção Aeronáutica | h1: Expor na MRO Brasil 2027",
+    "#/patrocinio": "patrocinio | Patrocínio | MRO Brasil 2027 · Manutenção Aeronáutica | h1: Patrocínio",
+    "#/reviva-2026": "reviva | Reviva 2026 | MRO Brasil · Manutenção Aeronáutica | h1: Reviva a MRO Brasil 2026",
+    "#/contato": "contato | Contato | MRO Brasil 2027 · Manutenção Aeronáutica | h1: Contato",
+    "#/inexistente": "nao-encontrada | Página não encontrada | MRO Brasil 2027 | h1: Página não encontrada",
+    "voltar": "#/contato",
+    "avancar": "#/inexistente"
+  },
+  "links_internos_invalidos": [],
+  "imagens_quebradas": [],
+  "formularios": {
+    "expositor_sem_empresa": [
+      "Empresa: Informe a empresa. O campo é obrigatório para expositores e patrocinadores."
+    ],
+    "visitante_sem_empresa_valido": true,
+    "confirmacao": "Demonstração concluída. Nenhuma solicitação foi enviada e nenhum dado foi armazenado.",
+    "storage": {
+      "local": 0,
+      "session": [
+        "mro2027:perfil-popup-exibido"
+      ]
+    }
+  },
+  "carrossel": {
+    "proximo": 1,
+    "anterior": 0,
+    "selecao_direta": 2,
+    "pausa": "Reproduzir destaques",
+    "mantaer": "https://mantaer.com.br/associe-se/"
+  },
+  "rolagem_horizontal": {
+    "inicio@1440": "ok",
+    "feira@1440": "ok",
+    "participar@1440": "ok",
+    "visitante@1440": "ok",
+    "expositor@1440": "ok",
+    "patrocinio@1440": "ok",
+    "reviva@1440": "ok",
+    "contato@1440": "ok",
+    "inicio@1024": "ok",
+    "feira@1024": "ok",
+    "participar@1024": "ok",
+    "visitante@1024": "ok",
+    "expositor@1024": "ok",
+    "patrocinio@1024": "ok",
+    "reviva@1024": "ok",
+    "contato@1024": "ok",
+    "inicio@768": "ok",
+    "feira@768": "ok",
+    "participar@768": "ok",
+    "visitante@768": "ok",
+    "expositor@768": "ok",
+    "patrocinio@768": "ok",
+    "reviva@768": "ok",
+    "contato@768": "ok",
+    "inicio@390": "ok",
+    "feira@390": "ok",
+    "participar@390": "ok",
+    "visitante@390": "ok",
+    "expositor@390": "ok",
+    "patrocinio@390": "ok",
+    "reviva@390": "ok",
+    "contato@390": "ok",
+    "inicio@360": "ok",
+    "feira@360": "ok",
+    "participar@360": "ok",
+    "visitante@360": "ok",
+    "expositor@360": "ok",
+    "patrocinio@360": "ok",
+    "reviva@360": "ok",
+    "contato@360": "ok"
+  },
+  "console_errors": [],
+  "network_requests_externos": [
+    "http://localhost:5207/",
+    "http://localhost:5207/assets/fonts/exo-2-latin-400-normal.woff2",
+    "http://localhost:5207/assets/fonts/exo-2-latin-600-normal.woff2",
+    "http://localhost:5207/assets/fonts/exo-2-latin-700-normal.woff2",
+    "http://localhost:5207/assets/fonts/exo-2-latin-800-normal.woff2",
+    "http://localhost:5207/assets/fonts/roboto-latin-400-normal.woff2",
+    "http://localhost:5207/assets/fonts/roboto-latin-500-normal.woff2",
+    "http://localhost:5207/assets/fonts/roboto-latin-700-normal.woff2",
+    "http://localhost:5207/assets/img/demo-feira-720.avif",
+    "http://localhost:5207/assets/img/demo-feira.avif",
+    "http://localhost:5207/assets/img/demo-feira.jpg",
+    "http://localhost:5207/assets/img/demo-painel-720.avif",
+    "http://localhost:5207/assets/img/demo-painel.avif",
+    "http://localhost:5207/assets/img/favicon.png",
+    "http://localhost:5207/assets/img/hero-aviacao-800.avif",
+    "http://localhost:5207/assets/img/hero-aviacao.avif",
+    "http://localhost:5207/assets/img/logo-mantaer.png",
+    "http://localhost:5207/assets/img/logo-mro2027.png",
+    "http://localhost:5207/assets/img/mantaer-manutencao-768.avif",
+    "http://localhost:5207/assets/img/mantaer-manutencao.avif",
+    "http://localhost:5207/src/app.js",
+    "http://localhost:5207/src/lead-adapter.js",
+    "http://localhost:5207/src/styles.css"
+  ]
+}

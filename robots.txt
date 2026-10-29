@@ -1,0 +1,4 @@
+# Prévia de aprovação: bloquear indexação.
+# Na publicação aprovada, substituir por regras definitivas e incluir o endereço do sitemap.
+User-agent: *
+Disallow: /
