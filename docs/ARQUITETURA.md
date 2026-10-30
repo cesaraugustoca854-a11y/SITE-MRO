@@ -68,3 +68,10 @@ Feira virtual 2026: tour 360° desenvolvido com a Orbitpan (https://app.orbitpan
 ## 7. Animação "Peça por peça" (29/10/2026)
 
 Inspirada em referências do repositório awesome-opus5-5-videos (turbofan desmontável em estágios e "linha de lápis promovida" a desenho técnico), sem reaproveitar código. Na home, entre "A feira" e "Como participar": turbofan em corte, em SVG gerado por `scripts/gerar_turbina.py`, em papel de desenho técnico. Ao entrar na tela as linhas se desenham; em seguida o motor se desmonta nos 5 estágios (fan, compressor, câmara de combustão, turbina, bocal), na ordem do escoamento. O botão "Montar/Desmontar o motor" alterna; montado, o ar flui (bypass em azul, núcleo em vermelho), animado só enquanto visível. Com movimento reduzido, o motor aparece desmontado e parado. No celular, os nomes viram legenda numerada.
+
+## 8. Identidade do folder 2027 e perguntas frequentes
+- **Identidade:** camada “v5” no fim de `src/styles.css`. Tokens `--teal` (#00B1C4, ciano da marca) e `--teal-ink` (#00707D, versão com contraste AA sobre fundo claro), `--slate` (cinza grafite do painel de contato do folder), `--abyss` e `--cut` (tamanho do chanfro). Classe utilitária `.chamfer` para os cantos cortados do folder. Filete vermelho antes dos rótulos e do tema da edição.
+- **Artes:** `assets/img/folder-{jato,globo,conferencia,tecnica}.jpg`, recortadas do PDF do folder a 3× (só JPEG: o `sips` do macOS gera AVIF que o Chrome não decodifica).
+- **Home:** faixa do palco com o tema; “Nosso mercado é gigante” (`.market`); eventos (`.events-teaser`); destaques do FAQ (`.faq-teaser`). A seção de cartões Reviva/MANTAER saiu, pois repetia o carrossel.
+- **Feira:** anéis de perfil do público (`.gauges`, valor em `--v`), seção Eventos (`#/feira/eventos`) e informações de acesso.
+- **FAQ:** rota `#/perguntas-frequentes/{grupo}`; links da home com `data-faq-open` abrem a pergunta exata (o roteador troca o alvo do scroll pelo `<details>` correspondente).

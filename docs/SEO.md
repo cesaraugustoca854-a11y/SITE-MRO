@@ -18,7 +18,17 @@ Auditoria do código da versão 2. Nota inicial para publicação: **66/100**. O
 | Trocar `noindex` e `robots.txt` | Só com aprovação de publicação | `PUBLICACAO.md`, item 1 |
 | Redirecionamentos 301 das 13 URLs antigas | Dependem do servidor de publicação | `URLS-ANTIGAS.md` |
 | HTTP 404 real para endereços inexistentes | Depende do servidor | — |
-| `organizer`, `image` e `url` no JSON-LD | Organizadora de 2027 e domínio não confirmados | `PENDENCIAS.md` |
+| `image` e `url` no JSON-LD | Dependem do domínio definitivo | `PUBLICACAO.md` |
 | `BreadcrumbList` e `Organization` | Precisam de URLs reais e créditos institucionais confirmados | — |
 | Logotipo em SVG | Falta o arquivo vetorial oficial | `PENDENCIAS.md` |
 | `hreflang`, se houver versão em inglês | Decisão editorial | — |
+
+## SEO e GEO por perguntas frequentes (30/10/2026)
+A estratégia principal de SEO e de GEO (visibilidade em respostas de IA como ChatGPT, Gemini e Perplexity) é o FAQ.
+
+- **Fonte única:** `content/faq.json` (19 perguntas em 7 grupos). `python3 scripts/gerar_faq.py` gera a página `#/perguntas-frequentes`, o bloco de destaques da home, o schema `FAQPage` no `<head>` e o `llms.txt`. Texto visível e schema nunca divergem.
+- **Redação para respostas de IA:** cada resposta começa pela resposta direta, repete o nome da feira (sem depender do contexto da pergunta) e traz números e nomes próprios do folder oficial. Onde não há dado confirmado, a resposta diz isso e indica o canal, em vez de inventar.
+- **Perguntas escolhidas pela intenção de busca:** quando é, onde é, tema, o que é MRO, tamanho do mercado, como chegar, estacionamento, quem visita, como visitar, como expor, como patrocinar, eventos, programação, feira virtual, contato.
+- **Event** ganhou `organizer` e `subEvent` (os 5 eventos do folder) e o tema da edição na descrição.
+- **`llms.txt`** na raiz resume a feira e todas as respostas em texto simples, para rastreadores de IA.
+- **Na publicação com rotas reais:** a página `/perguntas-frequentes` deve ter HTML próprio com o `FAQPage`; os demais grupos podem virar âncoras (`/perguntas-frequentes#local`). O Google exibe resultado em FAQ só para sites governamentais e de saúde desde 2023, mas o schema continua útil para a compreensão da página e para mecanismos de IA.

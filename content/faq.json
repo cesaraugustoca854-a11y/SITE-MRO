@@ -1,0 +1,130 @@
+{
+  "_leia": "Fonte única das perguntas frequentes. Depois de editar, rode: python3 scripts/gerar_faq.py (atualiza index.html, o schema FAQPage e llms.txt). Respostas: comece pela resposta direta e use apenas fatos confirmados pela organização. Links no formato [texto](#/rota) ou [texto](https://...).",
+  "grupos": [
+    {
+      "id": "sobre",
+      "titulo": "Sobre a feira",
+      "perguntas": [
+        {
+          "p": "O que é a MRO Brasil 2027?",
+          "r": "A MRO Brasil 2027 é a Feira Internacional de Manutenção Aeronáutica, dedicada à cadeia de manutenção, reparo e revisão (MRO) de aeronaves, motores e componentes. Segundo a organização, é a maior feira de manutenção aeronáutica da América Latina. A edição 2027 acontece nos dias 20 e 21 de outubro, no Centro de Convenções Frei Caneca, em São Paulo.",
+          "destaque": true
+        },
+        {
+          "p": "Quando acontece a MRO Brasil 2027?",
+          "r": "A MRO Brasil 2027 acontece nos dias 20 e 21 de outubro de 2027, uma quarta e uma quinta-feira. Os horários de abertura e encerramento ainda serão divulgados pela organização.",
+          "destaque": true
+        },
+        {
+          "p": "Qual é o tema da MRO Brasil 2027?",
+          "r": "O tema da edição 2027 é “A inteligência na revolução do MRO”. A feira coloca em debate a inteligência artificial aplicada ao MRO aeronáutico e o ambiente digital na manutenção.",
+          "destaque": true
+        },
+        {
+          "p": "O que significa MRO na aviação?",
+          "r": "MRO é a sigla em inglês para Maintenance, Repair and Overhaul, ou manutenção, reparo e revisão. O termo reúne as empresas e os profissionais que mantêm aeronaves, motores e componentes em condição de voo."
+        },
+        {
+          "p": "Qual é o tamanho do mercado brasileiro de manutenção aeronáutica?",
+          "r": "Segundo dados divulgados pela organização da MRO Brasil, o Brasil abriga o 4º maior mercado de manutenção aeronáutica do mundo, com faturamento de US$ 2,5 bilhões por ano e mais de 2.000 empresas de manutenção. O MRO aeronáutico brasileiro lidera a América Latina."
+        },
+        {
+          "p": "Quem organiza a MRO Brasil?",
+          "r": "A MRO Brasil é organizada pela Aeromarketing / Delta Fox Eventos. O atendimento da organização é feito pelos telefones (11) 5041-2088 e (11) 5548-3977 e pelo e-mail contato@deltafoxeventos.com.br."
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "titulo": "Local e acesso",
+      "perguntas": [
+        {
+          "p": "Onde acontece a MRO Brasil 2027?",
+          "r": "A MRO Brasil 2027 acontece no Centro de Convenções Frei Caneca, na Rua Frei Caneca, 569, Bela Vista, São Paulo (SP).",
+          "destaque": true
+        },
+        {
+          "p": "Como chegar ao Centro de Convenções Frei Caneca?",
+          "r": "O Centro de Convenções Frei Caneca fica a apenas 800 metros da Avenida Paulista, próximo ao metrô e às principais redes hoteleiras de São Paulo. O endereço é Rua Frei Caneca, 569, Bela Vista."
+        },
+        {
+          "p": "O Centro de Convenções Frei Caneca tem estacionamento?",
+          "r": "Sim. O Centro de Convenções Frei Caneca tem estacionamento com 1.200 vagas cobertas e elevadores diretos. Valores do estacionamento não foram informados pela organização."
+        }
+      ]
+    },
+    {
+      "id": "visitar",
+      "titulo": "Visitar a feira",
+      "perguntas": [
+        {
+          "p": "Quem visita a MRO Brasil?",
+          "r": "A MRO Brasil recebe mais de 4 mil visitantes, com grande presença de profissionais qualificados. Segundo a organização, 38% dos visitantes são diretores, presidentes, vice-presidentes ou proprietários, 24% são gerentes, coordenadores ou supervisores, e 85% decidem ou têm influência na compra de produtos e serviços. Também visitam a feira técnicos, compradores, engenheiros, mecânicos aeronáuticos, instrutores, pilotos e proprietários de aeronaves."
+        },
+        {
+          "p": "Como faço para visitar a MRO Brasil 2027?",
+          "r": "As condições de credenciamento e de acesso de visitantes da edição 2027 ainda serão divulgadas pela organização. Para ser avisado, registre seu interesse na página [Visitante](#/participar/visitante) ou fale com a organização pelo telefone (11) 5041-2088.",
+          "destaque": true
+        }
+      ]
+    },
+    {
+      "id": "expor",
+      "titulo": "Expor e patrocinar",
+      "perguntas": [
+        {
+          "p": "Como reservar um estande na MRO Brasil 2027?",
+          "r": "Para reservar um estande na MRO Brasil 2027, fale com a organização pelo WhatsApp (11) 5041-2088, pelo telefone (11) 5548-3977 ou pelo e-mail contato@deltafoxeventos.com.br. A organização informa condições especiais para quem garante a presença com antecedência. Você também pode registrar interesse na página [Expositor](#/participar/expositor).",
+          "destaque": true
+        },
+        {
+          "p": "Por que expor na MRO Brasil?",
+          "r": "A MRO Brasil reúne um público focado em soluções para MRO aeronáutico. Segundo a organização, 85% dos visitantes decidem ou influenciam compras, e a feira é o ponto de encontro dos principais executivos e especialistas do setor, além de reguladores, representantes das Forças Armadas e oficinas de manutenção."
+        },
+        {
+          "p": "Como patrocinar a MRO Brasil 2027?",
+          "r": "As oportunidades de patrocínio da MRO Brasil 2027 são apresentadas pela organização. Registre seu interesse na página [Patrocínio](#/patrocinio) ou fale pelo e-mail contato@deltafoxeventos.com.br. Os formatos e as cotas da edição 2027 ainda serão divulgados."
+        }
+      ]
+    },
+    {
+      "id": "eventos",
+      "titulo": "Eventos e programação",
+      "perguntas": [
+        {
+          "p": "Quais eventos acontecem durante a MRO Brasil 2027?",
+          "r": "Durante a MRO Brasil 2027 acontecem o Fórum Nacional de Formação em Manutenção Aeronáutica (3ª edição), o Encontro com a ANAC (3ª edição), o Brazilian Supply Chain Summit (3ª edição), o Encontro Nacional das Oficinas de Manutenção (2ª edição) e a Competição de Manutenção Aeronáutica (3ª edição). Veja a descrição de cada um em [Eventos da feira](#/feira/eventos).",
+          "destaque": true
+        },
+        {
+          "p": "A programação da MRO Brasil 2027 já está disponível?",
+          "r": "Ainda não. A MRO Brasil 2027 terá conferências, palestras técnicas, encontros e debates em auditórios maiores e com mais temas, segundo a organização. A grade com horários e palestrantes será publicada quando for confirmada."
+        }
+      ]
+    },
+    {
+      "id": "virtual",
+      "titulo": "Feira virtual e edição 2026",
+      "perguntas": [
+        {
+          "p": "Dá para visitar a MRO Brasil 2026 virtualmente?",
+          "r": "Sim. A edição 2026 da MRO Brasil foi registrada em um tour virtual 360°, feito em parceria com a Orbitpan, que pode ser visitado por qualquer pessoa, a qualquer momento. O acesso está na página [Feira virtual](#/reviva-2026/feira-virtual)."
+        },
+        {
+          "p": "Onde encontro fotos e vídeos da MRO Brasil 2026?",
+          "r": "Fotos, vídeos e depoimentos da edição 2026 ficam reunidos na página [Reviva 2026](#/reviva-2026). Os materiais oficiais estão sendo organizados e serão publicados conforme forem liberados pela organização."
+        }
+      ]
+    },
+    {
+      "id": "contato",
+      "titulo": "Contato",
+      "perguntas": [
+        {
+          "p": "Como falar com a organização da MRO Brasil?",
+          "r": "Fale com a organização da MRO Brasil pelo WhatsApp (11) 5041-2088, pelo telefone (11) 5548-3977 ou pelo e-mail contato@deltafoxeventos.com.br. Todos os canais estão na página [Contato](#/contato)."
+        }
+      ]
+    }
+  ]
+}

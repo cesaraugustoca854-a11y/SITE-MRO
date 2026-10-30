@@ -175,11 +175,11 @@ def run(c, url):
                                         "return {aberto:d.open, rota:location.hash, perfil:document.querySelector('input[name=perfil]:checked').value}")
 
     # 2. Rotas, títulos e histórico
-    R["rotas"] = c.js(wait + "const out={}; for (const h of ['#/','#/feira','#/participar','#/participar/visitante','#/participar/expositor','#/patrocinio','#/reviva-2026','#/contato','#/inexistente']) {"
+    R["rotas"] = c.js(wait + "const out={}; for (const h of ['#/','#/feira','#/participar','#/participar/visitante','#/participar/expositor','#/patrocinio','#/reviva-2026','#/perguntas-frequentes','#/contato','#/inexistente']) {"
                       "location.hash=h; await wait(120); const p=document.querySelector('[data-page]:not([hidden])');"
                       "out[h]=p.dataset.page+' | '+document.title+' | h1: '+p.querySelector('h1').textContent.trim().slice(0,40);} "
                       "history.back(); await wait(150); out.voltar=location.hash; history.forward(); await wait(150); out.avancar=location.hash; return out")
-    R["links_internos_invalidos"] = c.js("const valid=/^#\\/(|feira(\\/(sobre|publico|oportunidades|informacoes))?|participar(\\/(visitante|expositor)(\\/formulario)?)?|patrocinio(\\/formulario)?|reviva-2026(\\/(fotos|videos|depoimentos|feira-virtual))?|contato)$/;"
+    R["links_internos_invalidos"] = c.js("const valid=/^#\\/(|feira(\\/(sobre|publico|eventos|oportunidades|informacoes))?|perguntas-frequentes(\\/(sobre|local|visitar|expor|eventos|virtual|contato))?|participar(\\/(visitante|expositor)(\\/formulario)?)?|patrocinio(\\/formulario)?|reviva-2026(\\/(fotos|videos|depoimentos|feira-virtual))?|contato)$/;"
                                          "return [...document.querySelectorAll('a[href^=\"#\"]')].map(a=>a.getAttribute('href')).filter(h=>!valid.test(h) && h!=='#conteudo' && !h.startsWith('#f-'))")
     R["imagens_quebradas"] = c.js(wait + "for (const p of document.querySelectorAll('[data-page]')) p.hidden=false; document.querySelectorAll('img[loading]').forEach(i=>i.loading='eager'); await wait(800);"
                                   "const bad=[...document.images].filter(i=>i.getAttribute('src') && (!i.complete || i.naturalWidth===0)).map(i=>i.alt); location.hash='#/feira'; await wait(50); location.hash='#/'; await wait(100); return bad")
@@ -201,7 +201,7 @@ def run(c, url):
     # 5. Capturas responsivas e verificação de rolagem horizontal
     R["rolagem_horizontal"] = {}
     pages = [("inicio", "#/"), ("feira", "#/feira"), ("participar", "#/participar"), ("visitante", "#/participar/visitante"),
-             ("expositor", "#/participar/expositor"), ("patrocinio", "#/patrocinio"), ("reviva", "#/reviva-2026"), ("contato", "#/contato")]
+             ("expositor", "#/participar/expositor"), ("patrocinio", "#/patrocinio"), ("reviva", "#/reviva-2026"), ("faq", "#/perguntas-frequentes"), ("contato", "#/contato")]
     for w, h, mobile, tag in [(1440, 900, False, "1440"), (1024, 768, False, "1024"), (768, 1024, True, "768"), (390, 844, True, "390"), (360, 740, True, "360")]:
         for name, hsh in pages:
             go(c, url, hsh, w, h, mobile)

@@ -16,10 +16,11 @@
     { path: "participar/visitante", page: "visitante", nav: "visitante", parent: "participar", sections: { formulario: "visitante-formulario" } },
     { path: "participar/expositor", page: "expositor", nav: "expositor", parent: "participar", sections: { formulario: "expositor-formulario" } },
     { path: "participar", page: "participar", nav: "participar" },
-    { path: "feira", page: "feira", nav: "feira", sections: { sobre: "feira-sobre", publico: "feira-publico", oportunidades: "feira-oportunidades", informacoes: "feira-informacoes" } },
+    { path: "feira", page: "feira", nav: "feira", sections: { sobre: "feira-sobre", publico: "feira-publico", eventos: "feira-eventos", oportunidades: "feira-oportunidades", informacoes: "feira-informacoes" } },
     { path: "patrocinio", page: "patrocinio", nav: "patrocinio", sections: { formulario: "patrocinio-formulario" } },
     { path: "reviva-2026", page: "reviva", nav: "reviva", filters: ["fotos", "videos", "depoimentos"], sections: { "feira-virtual": "reviva-virtual" } },
     { path: "contato", page: "contato", nav: "contato" },
+    { path: "perguntas-frequentes", page: "faq", nav: "faq", sections: { sobre: "faq-sobre", local: "faq-local", visitar: "faq-visitar", expor: "faq-expor", eventos: "faq-eventos", virtual: "faq-virtual", contato: "faq-contato" } },
     { path: "", page: "inicio", nav: null }
   ];
   var NOT_FOUND = { path: null, page: "nao-encontrada", nav: null };
@@ -69,6 +70,9 @@
     Carousel.setVisible(route.page === "inicio");
 
     var target = route.sections && extra && route.sections[extra] ? doc.getElementById(route.sections[extra]) : null;
+    var faqItem = faqAlvo && doc.getElementById(faqAlvo);
+    faqAlvo = null;
+    if (target && faqItem && target.contains(faqItem)) { faqItem.open = true; target = faqItem; }
     if (target) {
       scrollAndFocus(target, firstRender);
     } else if (!samePage) {
@@ -85,7 +89,7 @@
   }
 
   function scrollAndFocus(section, instant) {
-    var heading = $("h2", section) || section;
+    var heading = $("h2", section) || $("summary", section) || section;
     if (!heading.hasAttribute("tabindex")) heading.setAttribute("tabindex", "-1");
     requestAnimationFrame(function () {
       section.scrollIntoView({ block: "start", behavior: instant || reduceMotion.matches ? "auto" : "smooth" });
@@ -663,6 +667,13 @@
   window.addEventListener("scroll", function () {
     header.classList.toggle("is-scrolled", window.scrollY > 8);
   }, { passive: true });
+
+  /* Perguntas frequentes: os links da home abrem a pergunta exata (ver render). */
+  var faqAlvo = null;
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-faq-open]");
+    if (a) faqAlvo = a.getAttribute("data-faq-open");
+  });
 
   window.addEventListener("hashchange", render);
   if (!location.hash) history.replaceState(null, "", "#/");

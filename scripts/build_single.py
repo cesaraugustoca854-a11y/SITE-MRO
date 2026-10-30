@@ -62,9 +62,9 @@ def build_zip():
     files += [(p, f"docs/{p.name}") for p in sorted((ROOT / "docs").glob("*.md"))]
     files += [(p, f"qa/capturas/{p.name}") for p in sorted((ROOT / "qa/screenshots").glob("*.jpg"))]
     files += [(p, f"qa/{p.name}") for p in sorted((ROOT / "qa").glob("*.json"))]
-    for rel in ["index.html", "robots.txt"]:
+    for rel in ["index.html", "robots.txt", "llms.txt"]:
         files.append((ROOT / rel, f"codigo-fonte/{rel}"))
-    for folder in ["src", "assets", "scripts"]:
+    for folder in ["src", "assets", "scripts", "content"]:
         for p in sorted((ROOT / folder).rglob("*")):
             if p.is_file() and p.name != ".DS_Store":
                 files.append((p, f"codigo-fonte/{p.relative_to(ROOT)}"))
