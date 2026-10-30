@@ -23,6 +23,11 @@ Itens que a organização precisa fornecer ou aprovar antes da publicação. Nad
 ## Perguntas frequentes
 - [ ] Validar as 19 respostas de `content/faq.json` com a organização. Respostas sobre horários, credenciamento, programação e cotas dizem honestamente que a informação ainda será divulgada; atualizar quando houver dado oficial e rodar `python3 scripts/gerar_faq.py`.
 
+## Blog
+- [ ] Revisar e aprovar os 3 artigos rascunho em `content/blog/` (IA no MRO, mercado brasileiro, como expor). Foram escritos só com dados do folder; as definições das seis frentes de IA são explicações gerais, não afirmações da organização. Depois, `revisado: sim`.
+- [ ] Definir autoria (hoje "Organização da MRO Brasil") e a periodicidade de novos artigos.
+- [ ] Endereço final do site em `content/blog/config.json` (`url_base`).
+
 ## Idealização (seção não publicada)
 - [ ] Nome, tratamento/cargo correto, papel no projeto, biografia final, fotografia e autorização de uso.
 

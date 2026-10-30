@@ -75,3 +75,8 @@ Inspirada em referências do repositório awesome-opus5-5-videos (turbofan desmo
 - **Home:** faixa do palco com o tema; “Nosso mercado é gigante” (`.market`); eventos (`.events-teaser`); destaques do FAQ (`.faq-teaser`). A seção de cartões Reviva/MANTAER saiu, pois repetia o carrossel.
 - **Feira:** anéis de perfil do público (`.gauges`, valor em `--v`), seção Eventos (`#/feira/eventos`) e informações de acesso.
 - **FAQ:** rota `#/perguntas-frequentes/{grupo}`; links da home com `data-faq-open` abrem a pergunta exata (o roteador troca o alvo do scroll pelo `<details>` correspondente).
+
+## 9. Blog e acervo por arquivos
+- **Reviva:** `content/reviva.json` → `scripts/gerar_reviva.py` (galeria, nota de status, VideoObject); `scripts/preparar_fotos.py` cria as versões otimizadas. Vídeo com player sob demanda.
+- **Blog:** `content/blog/*.md` → `scripts/gerar_blog.py`. É a única parte com **páginas HTML reais** (`blog/…/index.html`), fora do roteador por `#`. Cabeçalho, rodapé e ícones são copiados de `index.html` (sempre sincronizados) e os links de rota viram `../index.html#/rota`. Só o menu usa JavaScript (`src/blog.js`). `scripts/qa_blog.py` verifica as páginas.
+- **HTML único (`dist/`):** não contém o blog, que precisa de arquivos separados. A pasta `site-completo/` (entregue na área de trabalho) reúne `index.html`, `src/`, `assets/` e `blog/` para abrir tudo junto.

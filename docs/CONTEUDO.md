@@ -37,5 +37,35 @@ git add -A && git commit -m "Acervo Reviva" && git push
 ```
 O script para com mensagem de erro se faltar legenda, texto alternativo, arquivo ou id.
 
-## Blog (próxima etapa)
-O blog segue o mesmo modelo, com um arquivo por artigo em `content/blog/`, e exige endereços reais por página. Ver `PUBLICACAO.md` item 3.
+## Blog
+Cada artigo é um arquivo em `content/blog/` e vira uma **página HTML real** (`blog/nome-do-artigo/index.html`), com endereço próprio, que os buscadores indexam.
+
+1. Crie `content/blog/nome-do-artigo.md` (o nome do arquivo vira o endereço):
+   ```
+   ---
+   titulo: Título completo do artigo
+   titulo_seo: Título curto para o Google (até 60 caracteres)
+   resumo: Resumo de 120 a 160 caracteres, com a resposta principal.
+   data: 2026-11-05
+   categoria: Mercado
+   imagem: folder-globo
+   imagem_alt: Descrição da imagem para quem não a vê.
+   revisado: nao
+   ---
+   Parágrafo de abertura que já responde a pergunta do título.
+
+   ## Subtítulo
+   Texto, listas com "-", **negrito** e [links](#/feira/informacoes).
+
+   ## Perguntas frequentes
+
+   ### Pergunta que alguém digitaria no Google?
+   Resposta direta, de uma a três frases.
+   ```
+   `imagem` é o nome (sem `.jpg`) de um arquivo em `assets/img/`. Links do site usam `#/rota`; links externos usam `https://`.
+2. Rode `python3 scripts/gerar_blog.py` (cria artigos, listagem e, quando houver endereço do site, `feed.xml` e `sitemap.xml`).
+3. Confira: `python3 scripts/qa_blog.py`.
+4. Com `revisado: nao` o artigo mostra o aviso "Rascunho em revisão pela organização". Depois da aprovação, troque para `revisado: sim`: o aviso some e o artigo entra no feed e no sitemap.
+5. Antes de publicar de verdade, preencha `url_base` em `content/blog/config.json` (por exemplo `https://www.mrobrasil.com.br`). Isso liga o canonical, o schema completo, o feed e o sitemap.
+
+Cada artigo termina com perguntas frequentes (o mesmo formato do FAQ do site). Elas viram o bloco visível e o schema FAQPage, que é o que mais ajuda o SEO e a visibilidade em respostas de IA. Escreva a resposta direta primeiro e cite só dados confirmados.

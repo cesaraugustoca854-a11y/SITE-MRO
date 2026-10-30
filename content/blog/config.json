@@ -1,0 +1,5 @@
+{
+  "_leia": "url_base: endereço final do site, sem barra no fim (ex.: https://www.mrobrasil.com.br). Enquanto estiver vazio, o gerador não cria feed.xml nem sitemap.xml e não escreve endereços absolutos.",
+  "url_base": "",
+  "autor": "Organização da MRO Brasil"
+}

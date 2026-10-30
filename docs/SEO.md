@@ -32,3 +32,6 @@ A estratégia principal de SEO e de GEO (visibilidade em respostas de IA como Ch
 - **Event** ganhou `organizer` e `subEvent` (os 5 eventos do folder) e o tema da edição na descrição.
 - **`llms.txt`** na raiz resume a feira e todas as respostas em texto simples, para rastreadores de IA.
 - **Na publicação com rotas reais:** a página `/perguntas-frequentes` deve ter HTML próprio com o `FAQPage`; os demais grupos podem virar âncoras (`/perguntas-frequentes#local`). O Google exibe resultado em FAQ só para sites governamentais e de saúde desde 2023, mas o schema continua útil para a compreensão da página e para mecanismos de IA.
+
+## Blog (30/10/2026)
+Páginas reais por artigo, `BlogPosting` + `FAQPage` (+ `BreadcrumbList` quando houver `url_base`), título SEO próprio de até 60 caracteres, resumo como meta description, FAQ no fim de cada artigo e links internos para as rotas do site. `feed.xml` e `sitemap.xml` só são gerados com `url_base` e só incluem artigos com `revisado: sim`. O sitemap do blog deve ser referenciado no `sitemap.xml` principal quando o site migrar para rotas reais.
