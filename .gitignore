@@ -11,3 +11,6 @@ dist/versoes/
 # Originais pesados do acervo (só as versões otimizadas em assets/img/reviva/ são versionadas)
 content/originais/*/*
 !content/originais/*/LEIA-ME.txt
+
+# Site de publicação gerado por scripts/gerar_site.py
+dist/site/

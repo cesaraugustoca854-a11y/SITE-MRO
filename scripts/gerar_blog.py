@@ -159,6 +159,7 @@ def casca():
         "topo": pega(r'<div class="topbar">.*?</header>'),
         "rodape": pega(r'<footer class="site-footer">.*?</footer>'),
         "robots": pega(r'<meta name="robots"[^>]*>'),
+        "robots_noindex": pega(r'<meta name="robots"[^>]*>'),
     }
 
 
@@ -178,6 +179,8 @@ def reescreve(trecho, raiz, atual=None):
 def pagina(c, raiz, titulo, descricao, corpo, extra_head="", canonico=None, og_tipo="website", og_imagem=None):
     cano = f'<link rel="canonical" href="{esc(canonico)}">\n<meta property="og:url" content="{esc(canonico)}">\n' if canonico else ""
     og_img = f'<meta property="og:image" content="{esc(og_imagem)}">\n' if og_imagem else ""
+    tw_img = f'<meta name="twitter:image" content="{esc(og_imagem)}">\n' if og_imagem else ""
+    md_alt = '<link rel="alternate" type="text/markdown" href="index.md" title="Versão em Markdown">\n' if canonico else ""
     return f'''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -194,6 +197,7 @@ def pagina(c, raiz, titulo, descricao, corpo, extra_head="", canonico=None, og_t
 <meta property="og:title" content="{esc(titulo)}">
 <meta property="og:description" content="{esc(descricao)}">
 {og_img}<meta name="twitter:card" content="summary_large_image">
+{tw_img}{md_alt}
 <link rel="stylesheet" href="{raiz}src/styles.css">
 {extra_head}</head>
 <body>
@@ -229,8 +233,8 @@ def imagem_tag(base, alt, raiz, grande=False, eager=False):
 
 
 # ---------------------------------------------------------------- Páginas
-def cartao(a, raiz):
-    rasc = '<span class="tag tag--demo">Rascunho</span> ' if not a["revisado"] else ""
+def cartao(a, raiz, com_tag=True):
+    rasc = '<span class="tag tag--demo">Rascunho</span> ' if (com_tag and not a["revisado"]) else ""
     return (f'<li class="blog-card">\n<div class="blog-card__media">{imagem_tag(a["imagem"], a["imagem_alt"], raiz)}</div>\n'
             f'<div class="blog-card__body">\n<p class="kicker">{esc(a["categoria"])}</p>\n'
             f'<h2 class="blog-card__title"><a href="{raiz}blog/{a["slug"]}/index.html">{esc(a["titulo"])}</a></h2>\n'
@@ -267,7 +271,7 @@ def gerar_indice(c, artigos, cfg):
     texto = pagina(c, raiz, f"Blog | {NOME} · Manutenção Aeronáutica",
                    "Artigos sobre manutenção aeronáutica, o mercado de MRO e a MRO Brasil 2027, feira internacional realizada em São Paulo.",
                    corpo, schema + (f'<link rel="alternate" type="application/rss+xml" title="Blog {NOME}" href="feed.xml">\n' if url else ""),
-                   canonico=f"{url}/blog/" if url else None)
+                   canonico=f"{url}/blog/" if url else None, og_imagem=f"{url}/assets/img/og-mro2027.jpg" if url else None)
     texto = texto.replace("{TOPO}", reescreve(c["topo"], raiz, "page")).replace("{RODAPE}", reescreve(c["rodape"], raiz))
     OUT.mkdir(exist_ok=True)
     (OUT / "index.html").write_text(texto, encoding="utf-8")
@@ -282,6 +286,8 @@ def faq_html(faq, raiz):
 
 
 def gerar_artigo(c, a, todos, cfg):
+    if not a["revisado"]:
+        c = dict(c, robots=c["robots_noindex"])  # rascunho nunca é indexado
     raiz = "../../"
     url = cfg.get("url_base")
     link_abs = f"{url}/blog/{a['slug']}/" if url else None
@@ -367,18 +373,49 @@ def gerar_feed(artigos, cfg):
         + "\n".join(f"<url><loc>{u}</loc></url>" for u in urls) + "\n</urlset>\n", encoding="utf-8")
 
 
-def main():
-    cfg = json.loads((SRC / "config.json").read_text(encoding="utf-8"))
-    artigos = sorted((ler_artigo(p, "") for p in SRC.glob("*.md")), key=lambda a: a["data"], reverse=True)
-    if not artigos:
-        sys.exit("Nenhum artigo em content/blog/")
+def destaques_home(artigos):
+    """Bloco "Últimos artigos" da home (index.html): só artigos revisados; sem eles, o bloco some."""
+    pub = [a for a in artigos if a["revisado"]][:3]
+    if pub:
+        bloco = ('<section class="section section--tint blog-teaser" aria-labelledby="h-blog-home">\n'
+                 '<div class="container">\n<header class="blog-teaser__head">\n<p class="kicker">Blog</p>\n'
+                 '<h2 id="h-blog-home" class="h2">Artigos sobre manutenção aeronáutica</h2>\n'
+                 '<a class="link-more" href="blog/index.html">Ver todos os artigos <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>\n</header>\n'
+                 '<ul class="blog-grid">\n' + "\n".join(cartao(a, "", com_tag=False) for a in pub) + '\n</ul>\n</div>\n</section>')
+    else:
+        bloco = ""
+    alvo = ROOT / "index.html"
+    doc = alvo.read_text(encoding="utf-8")
+    doc = re.sub(r"(<!-- BLOG:DESTAQUES -->).*?(<!-- /BLOG:DESTAQUES -->)", lambda m: m.group(1) + "\n" + bloco + "\n" + m.group(2), doc, flags=re.S)
+    alvo.write_text(doc, encoding="utf-8")
+
+
+def carregar_artigos():
+    return sorted((ler_artigo(p, "") for p in SRC.glob("*.md")), key=lambda a: a["data"], reverse=True)
+
+
+def construir(saida, cfg, artigos, robots=None):
+    """Grava listagem e artigos em `saida`. `robots` troca a meta robots das páginas publicáveis."""
+    global OUT
+    OUT = Path(saida)
     if OUT.exists():
         shutil.rmtree(OUT)
     c = casca()
+    if robots:
+        c["robots"] = robots
     gerar_indice(c, artigos, cfg)
     for a in artigos:
         gerar_artigo(c, a, artigos, cfg)
     gerar_feed(artigos, cfg)
+
+
+def main():
+    cfg = json.loads((SRC / "config.json").read_text(encoding="utf-8"))
+    artigos = carregar_artigos()
+    if not artigos:
+        sys.exit("Nenhum artigo em content/blog/")
+    construir(ROOT / "blog", cfg, artigos)
+    destaques_home(artigos)
     print(f"Blog: {len(artigos)} artigos ({sum(a['revisado'] for a in artigos)} revisados)")
 
 

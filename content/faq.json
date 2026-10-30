@@ -1,5 +1,6 @@
 {
   "_leia": "Fonte única das perguntas frequentes. Depois de editar, rode: python3 scripts/gerar_faq.py (atualiza index.html, o schema FAQPage e llms.txt). Respostas: comece pela resposta direta e use apenas fatos confirmados pela organização. Links no formato [texto](#/rota) ou [texto](https://...).",
+  "atualizado": "2026-10-30",
   "grupos": [
     {
       "id": "sobre",

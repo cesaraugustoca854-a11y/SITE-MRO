@@ -35,3 +35,13 @@ A estratégia principal de SEO e de GEO (visibilidade em respostas de IA como Ch
 
 ## Blog (30/10/2026)
 Páginas reais por artigo, `BlogPosting` + `FAQPage` (+ `BreadcrumbList` quando houver `url_base`), título SEO próprio de até 60 caracteres, resumo como meta description, FAQ no fim de cada artigo e links internos para as rotas do site. `feed.xml` e `sitemap.xml` só são gerados com `url_base` e só incluem artigos com `revisado: sim`. O sitemap do blog deve ser referenciado no `sitemap.xml` principal quando o site migrar para rotas reais.
+
+## Implementação de SEO, GEO e IA (30/10/2026)
+Resposta à auditoria: `scripts/gerar_site.py` cria o site de publicação em `dist/site/`.
+- **Endereços reais** para as 9 rotas (resolve o problema de o `#` não ser indexável), com o mesmo `app.js` em "modo páginas" (`window.MRO_MPA`). A prévia por `#` não mudou.
+- **Indexação:** `index, follow`, `canonical`, `og:url`, `og:image` (1200×630 nova, com o logotipo novo e `twitter:image`), `robots.txt` com `Sitemap:`, `sitemap.xml` com `lastmod`, `404.html`.
+- **Dados estruturados** por página (ver `PUBLICACAO.md`). O `FAQPage` ficou só na página de perguntas, onde o texto é visível, e com `dateModified`. O `Event` ganhou `url`, `image` e `organizer` com contato; os `subEvent` perderam as datas, porque as de cada evento não foram confirmadas. `Organization` com contato e `sameAs` (LinkedIn e Facebook; o Instagram ficou de fora até ser confirmado).
+- **GEO e IA:** data de atualização e fonte visíveis no FAQ e nos números do mercado e do público; versão em Markdown de cada página; `sitemap.md` por tema; `llms.txt` com duas frases de orientação e links diretos; comentários de descoberta em `robots.txt` e `sitemap.xml`. Isso é uma convenção de publicação: nenhum mecanismo de busca ou de IA é obrigado a ler esses arquivos, e não há garantia de menção ou citação.
+- **Blog:** bloco "Últimos artigos" na home (só artigos revisados), canonical, og:image e versão em Markdown por artigo.
+- **Verificação:** `scripts/qa_site.py` confere 14 páginas (console, imagens, rolagem, robots, canonical, título, descrição, JSON-LD, 1 h1, links e âncoras, `.md`, sitemap) e as interações (formulário em demonstração, filtro e ampliação da galeria, pergunta aberta por âncora, carrossel, pop-up, menu móvel).
+- **Não feito (depende de fora):** endereço final confirmado, servidor com 404/redirecionamentos, envio do sitemap aos buscadores, fontes e ano dos números de mercado, confirmação do Instagram, AVIF (`brew install libavif`) e medição pós-lançamento de menções em IAs.

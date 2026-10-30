@@ -28,6 +28,13 @@ Itens que a organização precisa fornecer ou aprovar antes da publicação. Nad
 - [ ] Definir autoria (hoje "Organização da MRO Brasil") e a periodicidade de novos artigos.
 - [ ] Endereço final do site em `content/blog/config.json` (`url_base`).
 
+## Publicação e SEO
+- [ ] Confirmar o endereço final do site (`content/site.json`, hoje `https://www.mrobrasil.com.br`) e o servidor (404 real, redirecionamentos, tipos MIME de `.md`).
+- [ ] Confirmar o perfil do Instagram (o link atual é `mrobrasil2024`) para incluí-lo em `sameAs`; confirmar o LinkedIn e o Facebook.
+- [ ] Fonte e ano-base dos números de mercado; depois, citar a fonte nas páginas e no FAQ.
+- [ ] Decidir se rastreadores de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) ficam liberados. O `robots.txt` atual libera todos.
+- [ ] Definir quem atualiza `content/site.json` (`atualizado`) e `content/faq.json` (`atualizado`) a cada mudança de conteúdo.
+
 ## Idealização (seção não publicada)
 - [ ] Nome, tratamento/cargo correto, papel no projeto, biografia final, fotografia e autorização de uso.
 

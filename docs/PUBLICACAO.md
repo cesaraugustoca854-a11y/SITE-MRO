@@ -1,3 +1,33 @@
+# Publicação com páginas reais (SEO, GEO e IA)
+
+A prévia por `#` continua para aprovação. Para publicar, gere o site com endereços reais:
+
+```bash
+python3 scripts/gerar_site.py                      # só artigos com revisado: sim
+python3 scripts/gerar_site.py --incluir-rascunhos  # conferência: rascunhos com noindex, fora do sitemap
+python3 scripts/qa_site.py                         # 14 páginas, dados estruturados, links, interações
+```
+
+Sai em `dist/site/` (não vai para o GitHub; é gerado). Suba o **conteúdo dessa pasta** na raiz do domínio.
+
+## O que sai
+- Uma página por rota (`/`, `/feira/`, `/participar/`, `/participar/visitante/`, `/participar/expositor/`, `/patrocinio/`, `/reviva-2026/`, `/perguntas-frequentes/`, `/contato/`), cada uma com título, descrição, `canonical`, Open Graph, Twitter Card e `robots: index, follow`.
+- Dados estruturados por página: `Organization`, `WebSite`, `WebPage` (ou `FAQPage`), `BreadcrumbList`; `Event` na home e na Feira; `VideoObject` no Reviva quando houver vídeo com data.
+- Versão em Markdown de cada página (`index.md` ao lado do `index.html`), `sitemap.md` (mapa por tema) e `llms.txt`, com data, fonte, revisão e responsável.
+- `sitemap.xml` (com comentário apontando o `sitemap.md`), `robots.txt` liberado com a linha `Sitemap:`, `404.html` com `noindex`.
+- `redirects.csv` e `_redirects` com os redirecionamentos do site antigo (ver `URLS-ANTIGAS.md`). Em Apache/Nginx, converta o CSV.
+- Blog: só artigos `revisado: sim` no sitemap e no feed. Sem nenhum revisado, o blog (e o link no menu) fica de fora.
+
+## Antes de colocar no ar
+1. Confirmar o endereço final em `content/site.json` (`url_base`; hoje `https://www.mrobrasil.com.br`) e rodar de novo `gerar_site.py`.
+2. Servidor: responder `404.html` com **status 404** para endereços inexistentes, servir `index.html` nas pastas, e aplicar os redirecionamentos 301/302.
+3. Servir `.md` e `.txt` como `text/markdown; charset=utf-8` e `text/plain; charset=utf-8`.
+4. No Google Search Console e no Bing Webmaster: verificar a propriedade e enviar `sitemap.xml` (só depois de publicado; a organização decide).
+5. Conferir no ar: `robots.txt`, `sitemap.xml`, `llms.txt`, uma página `.md` e o Teste de Resultados Rich do Google na home, na Feira e no FAQ.
+6. Remover o `noindex` não é mais necessário no site de publicação: ele só existe na prévia (`index.html`, `blog/`).
+
+---
+
 # Configuração para a futura publicação
 
 Nada foi publicado. Ao receber aprovação específica:

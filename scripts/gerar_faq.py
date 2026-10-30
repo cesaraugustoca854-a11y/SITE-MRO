@@ -41,10 +41,19 @@ def para_texto(texto):
     return LINK.sub(r"\1", texto)
 
 
-def bloco_jsonld(grupos):
+MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+
+
+def bloco_atualizado(iso):
+    a, m, d = (int(x) for x in iso.split("-"))
+    return (f'Atualizado em <time datetime="{iso}">{d} de {MESES[m - 1]} de {a}</time>. '
+            "Fonte dos dados: folder oficial da MRO Brasil 2027 e organização do evento.")
+
+
+def bloco_jsonld(grupos, atualizado):
     itens = [{"@type": "Question", "name": q["p"], "acceptedAnswer": {"@type": "Answer", "text": para_texto(q["r"])}}
              for g in grupos for q in g["perguntas"]]
-    data = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "pt-BR", "mainEntity": itens}
+    data = {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "pt-BR", "dateModified": atualizado, "mainEntity": itens}
     return '<script type="application/ld+json">\n' + json.dumps(data, ensure_ascii=False, indent=2) + "\n</script>"
 
 
@@ -105,10 +114,12 @@ def trocar(doc, marca, conteudo):
 
 
 def main():
-    grupos = json.loads((ROOT / "content" / "faq.json").read_text(encoding="utf-8"))["grupos"]
+    dados = json.loads((ROOT / "content" / "faq.json").read_text(encoding="utf-8"))
+    grupos, atualizado = dados["grupos"], dados["atualizado"]
     alvo = ROOT / "index.html"
     doc = alvo.read_text(encoding="utf-8")
-    doc = trocar(doc, "FAQ:JSONLD", bloco_jsonld(grupos))
+    doc = trocar(doc, "FAQ:JSONLD", bloco_jsonld(grupos, atualizado))
+    doc = trocar(doc, "FAQ:ATUALIZADO", bloco_atualizado(atualizado))
     doc = trocar(doc, "FAQ:SUBNAV", bloco_subnav(grupos))
     doc = trocar(doc, "FAQ:PAGINA", bloco_pagina(grupos))
     doc = trocar(doc, "FAQ:DESTAQUES", bloco_destaques(grupos))

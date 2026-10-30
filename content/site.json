@@ -1,0 +1,13 @@
+{
+  "_leia": "Dados do site publicado. url_base é o endereço final (sem barra no fim); confirmar antes de publicar. Depois de editar, rode: python3 scripts/gerar_site.py",
+  "url_base": "https://www.mrobrasil.com.br",
+  "nome": "MRO Brasil 2027",
+  "atualizado": "2026-10-30",
+  "responsavel": "Organização da MRO Brasil (Aeromarketing / Delta Fox Eventos)",
+  "email": "contato@deltafoxeventos.com.br",
+  "telefone": "+55-11-5041-2088",
+  "sameAs": [
+    "https://www.linkedin.com/company/mrobrasil",
+    "https://www.facebook.com/mrobrasil/"
+  ]
+}

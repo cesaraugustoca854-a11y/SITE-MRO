@@ -26,7 +26,16 @@
   var NOT_FOUND = { path: null, page: "nao-encontrada", nav: null };
   var PROFILE_PAGES = { visitante: 1, expositor: 1, patrocinio: 1 };
 
+  /* Modo páginas reais: cada rota é um HTML próprio (window.MRO_MPA = { page }). O que vem
+     depois do # é só âncora ou filtro do acervo; o restante do código é o mesmo. */
+  var MPA = window.MRO_MPA || null;
+
   function parseHash() {
+    if (MPA) {
+      var rm = ROUTES.filter(function (r) { return r.page === MPA.page; })[0] || NOT_FOUND;
+      var h = decodeURIComponent(location.hash.replace(/^#/, "")).toLowerCase();
+      return { route: rm, extra: rm.filters && rm.filters.indexOf(h) > -1 ? h : "" };
+    }
     var raw = location.hash;
     if (raw && raw.indexOf("#/") !== 0 && raw !== "#") return null; // âncora comum (não é rota)
     var rest = decodeURIComponent(raw.replace(/^#\/?/, "")).replace(/\/+$/, "").toLowerCase();
@@ -55,8 +64,10 @@
     var samePage = currentPage === route.page;
 
     $$("[data-page]").forEach(function (el) { el.hidden = el !== pageEl; });
-    doc.title = pageEl.getAttribute("data-title");
-    if (metaDesc) metaDesc.setAttribute("content", pageEl.getAttribute("data-description"));
+    if (!MPA) {
+      doc.title = pageEl.getAttribute("data-title");
+      if (metaDesc) metaDesc.setAttribute("content", pageEl.getAttribute("data-description"));
+    }
 
     $$(".site-nav [data-nav]").forEach(function (a) {
       var key = a.getAttribute("data-nav");
@@ -70,6 +81,7 @@
     Carousel.setVisible(route.page === "inicio");
 
     var target = route.sections && extra && route.sections[extra] ? doc.getElementById(route.sections[extra]) : null;
+    if (MPA && extra) { var gh = $("#h-galeria"); target = gh ? gh.closest("section") : null; }
     var faqItem = faqAlvo && doc.getElementById(faqAlvo);
     faqAlvo = null;
     if (target && faqItem && target.contains(faqItem)) { faqItem.open = true; target = faqItem; }
@@ -201,11 +213,12 @@
   /* ------------------------------------------------------------------ */
   var Carousel = (function () {
     var root = $("#destaques");
+    if (!root) return { setVisible: function () {}, setDialog: function () {} }; // páginas sem carrossel
     var slides = $$(".slide", root);
     var tabs = $$(".carousel__tab", root);
     var toggleBtn = $("[data-carousel-toggle]", root);
     var live = $("[data-carousel-live]", root);
-    var names = ["MRO Brasil 2027", "Reviva 2026", "Associe-se à MANTAER"];
+    var names = ["MRO Brasil 2027", "Expositores 2027", "Reviva 2026", "Associe-se à MANTAER"];
     var MS = 8000;
     var index = 0, timer = null, startedAt = 0, remaining = MS;
     var userPaused = reduceMotion.matches;
@@ -324,6 +337,7 @@
   /* ------------------------------------------------------------------ */
   var Gallery = (function () {
     var list = $("[data-gallery]");
+    if (!list) return { setFilter: function () {} }; // páginas sem acervo
     var items = $$(".g-item", list);
     var count = $("[data-gallery-count]");
     var labels = { todos: "itens", fotos: "fotos", videos: "vídeos", depoimentos: "depoimentos" };
@@ -698,8 +712,22 @@
     if (a) faqAlvo = a.getAttribute("data-faq-open");
   });
 
+  /* Páginas reais: link para uma pergunta (/perguntas-frequentes/#q-...) abre a resposta. */
+  function abrirAncoraFaq() {
+    if (!MPA) return;
+    var item = doc.getElementById(decodeURIComponent(location.hash.replace(/^#/, "")));
+    if (!item || item.tagName !== "DETAILS") return;
+    item.open = true;
+    requestAnimationFrame(function () {
+      item.scrollIntoView({ block: "start", behavior: "auto" });
+      $("summary", item).focus({ preventScroll: true });
+    });
+  }
+
   window.addEventListener("hashchange", render);
-  if (!location.hash) history.replaceState(null, "", "#/");
+  window.addEventListener("hashchange", abrirAncoraFaq);
+  if (!MPA && !location.hash) history.replaceState(null, "", "#/");
   render();
+  abrirAncoraFaq();
   maybeShowPopup();
 })();
