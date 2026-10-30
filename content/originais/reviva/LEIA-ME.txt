@@ -1,0 +1,4 @@
+Coloque aqui as fotos originais do Reviva 2026 (JPG ou PNG, o maior tamanho que houver).
+O nome do arquivo (sem a extensão) é o "arquivo" usado em content/reviva.json.
+Depois rode: python3 scripts/preparar_fotos.py
+Esta pasta não vai para o GitHub (ver .gitignore); só as versões otimizadas vão.

@@ -632,6 +632,29 @@
     });
   })();
 
+  /* Vídeos do acervo: o player (YouTube sem cookies ou Vimeo) só carrega depois do clique. */
+  var PLAYERS = {
+    youtube: "https://www.youtube-nocookie.com/embed/{id}?autoplay=1&rel=0",
+    vimeo: "https://player.vimeo.com/video/{id}?autoplay=1&dnt=1"
+  };
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest("[data-video-play]");
+    if (!btn) return;
+    var box = btn.closest("[data-video]");
+    var parts = box.getAttribute("data-video").split(":");
+    var url = PLAYERS[parts[0]];
+    if (!url) return;
+    var frame = doc.createElement("iframe");
+    frame.src = url.replace("{id}", encodeURIComponent(parts[1]));
+    frame.title = box.getAttribute("data-video-title") || "Vídeo da MRO Brasil 2026";
+    frame.allow = "autoplay; fullscreen; picture-in-picture";
+    frame.setAttribute("allowfullscreen", "");
+    box.innerHTML = "";
+    box.appendChild(frame);
+    box.classList.add("is-loaded");
+    frame.focus();
+  });
+
   /* Peça por peça: o motor se desenha ao entrar na tela e depois se desmonta.
      O botão alterna; montado, o ar volta a passar pelo motor. */
   (function () {

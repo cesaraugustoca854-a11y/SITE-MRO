@@ -223,6 +223,9 @@
 }
 </script>
 <!-- /FAQ:JSONLD -->
+<!-- REVIVA:SCHEMA -->
+
+<!-- /REVIVA:SCHEMA -->
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
@@ -903,7 +906,9 @@
       <p class="eyebrow eyebrow--light"><span class="eyebrow__index">—</span> Edição anterior</p>
       <h1 id="h-reviva" class="display display--light" tabindex="-1">Reviva a MRO Brasil 2026</h1>
       <p class="lead lead--light">Tour virtual 360°, fotos, vídeos e depoimentos da edição 2026 reunidos em um só lugar.</p>
-      <p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>O tour virtual 360° é um registro real da edição 2026.</strong> As fotos da galeria abaixo ainda são demonstrações de layout; vídeos e depoimentos aparecem como pendentes até o envio dos arquivos autorizados.</span></p>
+      <!-- REVIVA:NOTA -->
+<p class="status-note"><svg class="ico" aria-hidden="true"><use href="#i-info"/></svg><span><strong>O tour virtual 360° é um registro real da edição 2026.</strong> As fotos da galeria abaixo ainda são demonstrações de layout; os vídeos aparecem como pendentes até o envio dos arquivos autorizados; os depoimentos aparecem como pendentes até o envio dos textos autorizados.</span></p>
+<!-- /REVIVA:NOTA -->
     </div>
   </header>
 
@@ -942,43 +947,45 @@
       </div>
 
       <ul class="gallery" data-gallery>
-        <li class="g-item g-item--wide" data-type="fotos">
-          <button type="button" class="g-photo" data-lightbox data-full="assets/img/demo-feira.jpg" data-caption="Demonstração de layout: circulação de visitantes em pavilhão de feira. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
-            <picture><source type="image/avif" srcset="assets/img/demo-feira-720.avif"><img src="assets/img/demo-feira-720.jpg" width="720" height="540" alt="Imagem ilustrativa de visitantes circulando entre estandes em um pavilhão de exposições." loading="lazy" decoding="async"></picture>
-            <span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
-          </button>
-          <p class="g-caption"><span class="tag tag--demo">Demonstração</span> Circulação em pavilhão de feira</p>
-        </li>
-        <li class="g-item" data-type="fotos">
-          <button type="button" class="g-photo" data-lightbox data-full="assets/img/demo-painel.jpg" data-caption="Demonstração de layout: painel de debate em auditório. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
-            <picture><source type="image/avif" srcset="assets/img/demo-painel-720.avif"><img src="assets/img/demo-painel-720.jpg" width="720" height="540" alt="Imagem ilustrativa de painel de debate com quatro participantes e plateia." loading="lazy" decoding="async"></picture>
-            <span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
-          </button>
-          <p class="g-caption"><span class="tag tag--demo">Demonstração</span> Painel de debate</p>
-        </li>
-        <li class="g-item" data-type="fotos">
-          <button type="button" class="g-photo" data-lightbox data-full="assets/img/hero-aviacao.jpg" data-caption="Demonstração de layout: aeronave em hangar de manutenção. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
-            <picture><source type="image/avif" srcset="assets/img/hero-aviacao-800.avif"><img src="assets/img/hero-aviacao-800.jpg" width="800" height="533" alt="Imagem ilustrativa de aeronave comercial em hangar de manutenção." loading="lazy" decoding="async"></picture>
-            <span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
-          </button>
-          <p class="g-caption"><span class="tag tag--demo">Demonstração</span> Hangar de manutenção</p>
-        </li>
-        <li class="g-item" data-type="videos">
-          <div class="pending pending--video">
-            <svg class="ico pending__ico" aria-hidden="true"><use href="#i-film"/></svg>
-            <p class="pending__title">Vídeos em preparação</p>
-            <p class="pending__text">Os vídeos oficiais da edição 2026 serão publicados aqui, com reprodução iniciada por quem visita.</p>
-          </div>
-          <p class="g-caption"><span class="tag">Vídeos</span> Acervo oficial pendente</p>
-        </li>
-        <li class="g-item" data-type="depoimentos">
-          <figure class="pending pending--quote">
-            <svg class="ico pending__ico" aria-hidden="true"><use href="#i-quote"/></svg>
-            <blockquote class="pending__title">Depoimentos em preparação</blockquote>
-            <figcaption class="pending__text">Falas e identificação de participantes serão publicadas somente com autorização de uso.</figcaption>
-          </figure>
-          <p class="g-caption"><span class="tag">Depoimentos</span> Acervo oficial pendente</p>
-        </li>
+<!-- REVIVA:GALERIA -->
+<li class="g-item g-item--wide" data-type="fotos">
+<button type="button" class="g-photo" data-lightbox data-full="assets/img/demo-feira.jpg" data-caption="Demonstração de layout: circulação de visitantes em pavilhão de feira. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
+<picture><source type="image/avif" srcset="assets/img/demo-feira-720.avif"><img src="assets/img/demo-feira-720.jpg" width="720" height="540" alt="Imagem ilustrativa de visitantes circulando entre estandes em um pavilhão de exposições." loading="lazy" decoding="async"></picture>
+<span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
+</button>
+<p class="g-caption"><span class="tag tag--demo">Demonstração</span> Circulação em pavilhão de feira</p>
+</li>
+<li class="g-item" data-type="fotos">
+<button type="button" class="g-photo" data-lightbox data-full="assets/img/demo-painel.jpg" data-caption="Demonstração de layout: painel de debate em auditório. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
+<picture><source type="image/avif" srcset="assets/img/demo-painel-720.avif"><img src="assets/img/demo-painel-720.jpg" width="720" height="540" alt="Imagem ilustrativa de painel de debate com quatro participantes e plateia." loading="lazy" decoding="async"></picture>
+<span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
+</button>
+<p class="g-caption"><span class="tag tag--demo">Demonstração</span> Painel de debate</p>
+</li>
+<li class="g-item" data-type="fotos">
+<button type="button" class="g-photo" data-lightbox data-full="assets/img/hero-aviacao.jpg" data-caption="Demonstração de layout: aeronave em hangar de manutenção. Imagem ilustrativa, não é registro da MRO Brasil 2026.">
+<picture><source type="image/avif" srcset="assets/img/hero-aviacao-800.avif"><img src="assets/img/hero-aviacao-800.jpg" width="800" height="533" alt="Imagem ilustrativa de aeronave comercial em hangar de manutenção." loading="lazy" decoding="async"></picture>
+<span class="g-photo__zoom"><svg class="ico" aria-hidden="true"><use href="#i-expand"/></svg><span class="sr-only">Ampliar imagem</span></span>
+</button>
+<p class="g-caption"><span class="tag tag--demo">Demonstração</span> Hangar de manutenção</p>
+</li>
+<li class="g-item" data-type="videos">
+<div class="pending pending--video">
+<svg class="ico pending__ico" aria-hidden="true"><use href="#i-film"/></svg>
+<p class="pending__title">Vídeos em preparação</p>
+<p class="pending__text">Os vídeos oficiais da edição 2026 serão publicados aqui, com reprodução iniciada por quem visita.</p>
+</div>
+<p class="g-caption"><span class="tag">Vídeos</span> Acervo oficial pendente</p>
+</li>
+<li class="g-item" data-type="depoimentos">
+<figure class="pending pending--quote">
+<svg class="ico pending__ico" aria-hidden="true"><use href="#i-quote"/></svg>
+<blockquote class="pending__title">Depoimentos em preparação</blockquote>
+<figcaption class="pending__text">Falas e identificação de participantes serão publicadas somente com autorização de uso.</figcaption>
+</figure>
+<p class="g-caption"><span class="tag">Depoimentos</span> Acervo oficial pendente</p>
+</li>
+<!-- /REVIVA:GALERIA -->
       </ul>
       <p class="muted small gallery-note">Registros da edição 2024 do site atual permanecem no arquivo próprio e não são apresentados como 2026.</p>
     </div>

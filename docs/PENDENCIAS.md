@@ -27,6 +27,7 @@ Itens que a organização precisa fornecer ou aprovar antes da publicação. Nad
 - [ ] Nome, tratamento/cargo correto, papel no projeto, biografia final, fotografia e autorização de uso.
 
 ## Reviva 2026
+- Fluxo de publicação por arquivos: `docs/CONTEUDO.md` (`content/reviva.json`, `scripts/preparar_fotos.py`, `scripts/gerar_reviva.py`).
 - [ ] Fotos oficiais da edição 2026, com legendas e autorização (substituir as 3 demonstrações e os espaços pendentes).
 - [ ] Vídeos (arquivo MP4/WebM ou link de plataforma) com miniatura e legenda/transcrição.
 - [ ] Depoimentos com nome, cargo, empresa e autorização de uso de imagem e fala.
