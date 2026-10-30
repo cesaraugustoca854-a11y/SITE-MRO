@@ -903,3 +903,8 @@ button { font: inherit; }
 .service { background: var(--slate); }
 .service :focus-visible { outline-color: #FFD24A; }
 .events-teaser__text .h2, .faq-teaser .h2 { margin-bottom: 16px; }
+
+/* Logotipo novo (folder 2027): versão branca direto sobre o rodapé, sem caixa */
+.site-footer__logo { background: none; padding: 0; margin-bottom: 20px; }
+.site-footer__logo img { width: 210px; }
+.brand img { width: clamp(140px, 13vw, 172px); }
